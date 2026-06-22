@@ -79,7 +79,7 @@ WorkBuddy 会执行：
 
 ### 自动化触发（推荐，每天 10:00）
 
-自动化 ID：`automation-1781840242202`
+自动化 ID：`automation-1782099308244`（本机 Daniel Xue）；另一台电脑（longx）需单独创建
 
 ---
 
@@ -140,11 +140,11 @@ WorkBuddy 会执行：
 | 序号 | 输出形式 | 说明 |
 |------|---------|------|
 | 1 | **WorkBuddy 对话框全文** | 完整简报正文必须在聊天窗口中逐条展示，不可仅推送微信而省略对话框输出 |
-| 2 | **Word 文档 (.docx)** | 使用 `python-docx` 生成专业排版的 Word 文档，存档至 `E:\workbuddy\briefings\YYYY-MM-DD-法律简报.docx` |
+| 2 | **Word 文档 (.docx)** | 使用 `python-docx` 生成专业排版的 Word 文档，存档至 `D:\workbuddy\briefings\YYYY-MM-DD-法律简报.docx`（本机）或 `E:\workbuddy\briefings\YYYY-MM-DD-法律简报.docx`（另一台 longx） |
 | 3 | **微信推送** | 通过 Server酱 推送完整简报至用户微信（SendKey: SCT366652TBlXQxdb1yp6txFGrPrS3xRrK） |
 
 **Word 文档生成规范**：
-- 使用 `generate_briefing_docx.py` 脚本（路径：`E:\workbuddy\generate_briefing_docx.py`）
+- 使用简报生成脚本 `gen_docx.py`（本机：`D:\workbuddy\briefings\gen_docx.py`，另一台：`E:\workbuddy\briefings\gen_docx.py`）
 - **字体**：全文宋体（中文）+ Times New Roman（英文/数字）
 - **字号**：主标题小二(18pt)、文章标题四号(14pt)、正文小四(12pt)、摘要信息五号(10.5pt)
 - **段落间距**：段前0.5行、段后0.5行、1.15倍行距
@@ -152,14 +152,18 @@ WorkBuddy 会执行：
 - **格式**：每条文章含标题（蓝底白字）、来源/日期/案号信息行、争议焦点、法院裁判、应用场景三大板块
 - **底部署名**：薛龙 | 合伙人/律师 | 18016302187
 
-**JSON 存档**：`E:\workbuddy\briefings\YYYY-MM-DD-briefing.json`
+**JSON 存档**：`D:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（本机）或 `E:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（另一台 longx）
 
 ---
 
 ## 命令行参数
 
 ```bash
-# 全量白名单抓取（默认）
+# 本机（Daniel Xue）
+NODE_OPTIONS="" "C:\Users\Daniel Xue\.workbuddy\binaries\node\versions\22.12.0\node.exe" \
+  "C:\Users\Daniel Xue\.workbuddy\skills\legal-briefing\scripts\legal_briefing.js"
+
+# 另一台电脑（longx）
 NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.exe" \
   "C:\Users\longx\.workbuddy\skills\legal-briefing\scripts\legal_briefing.js"
 
@@ -175,13 +179,32 @@ NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.e
 
 ---
 
-## 自动化提示词模板
+## 自动化提示词模板（本机 Daniel Xue）
 
 ```
 运行法律简报技能，生成今日民商事法律要闻简报。必须完成以下全部步骤：
 
 1. 执行搜索脚本：
-   NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.exe" "C:\Users\longx\.workbuddy\skills\legal-briefing\scripts\legal_briefing.js"
+   "C:\Users\Daniel Xue\.workbuddy\binaries\node\versions\22.12.0\node.exe" "C:\Users\Daniel Xue\.workbuddy\skills\legal-briefing\scripts\legal_briefing.js"
+
+2. AI 生成简报：将 stdout 作为指令，严格按格式输出今日简报（每条详细展开争议焦点、裁判逻辑、案源价值，不设字数上限）。
+
+3. 【必须】在 WorkBuddy 对话框中逐条展示完整简报全文——不可跳过！
+
+4. 保存 JSON：D:\workbuddy\briefings\[今日日期]-briefing.json
+
+5. 生成 Word 文档：运行 python-docx 生成 .docx，存档至 D:\workbuddy\briefings\[今日日期]-法律简报.docx
+
+6. 推送微信：通过 Server酱推送完整简报至用户微信（SendKey: SCT366652TBlXQxdb1yp6txFGrPrS3xRrK）
+```
+
+## 自动化提示词模板（另一台电脑 longx）
+
+```
+运行法律简报技能，生成今日民商事法律要闻简报。必须完成以下全部步骤：
+
+1. 执行搜索脚本：
+   "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.exe" "C:\Users\longx\.workbuddy\skills\legal-briefing\scripts\legal_briefing.js"
 
 2. AI 生成简报：将 stdout 作为指令，严格按格式输出今日简报（每条详细展开争议焦点、裁判逻辑、案源价值，不设字数上限）。
 
@@ -198,6 +221,6 @@ NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.e
 
 ## 文件位置
 
-- 技能目录：`C:\Users\longx\.workbuddy\skills\legal-briefing\`
+- 技能目录：`C:\Users\Daniel Xue\.workbuddy\skills\legal-briefing\`（本机）| `C:\Users\longx\.workbuddy\skills\legal-briefing\`（另一台）
 - 抓取脚本：`scripts/legal_briefing.js`
-- 简报存档：`E:\workbuddy\briefings\YYYY-MM-DD-briefing.json`
+- 简报存档：`D:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（本机）| `E:\workbuddy\briefings\`（另一台）
