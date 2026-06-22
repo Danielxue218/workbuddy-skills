@@ -196,6 +196,11 @@ NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.e
 5. 生成 Word 文档：运行 python-docx 生成 .docx，存档至 D:\workbuddy\briefings\[今日日期]-法律简报.docx
 
 6. 推送微信：通过 Server酱推送完整简报至用户微信（SendKey: SCT366652TBlXQxdb1yp6txFGrPrS3xRrK）
+
+7. 【可选·级联朋友圈】简报生成完毕后，提示用户：「今日简报已生成。是否需要我基于简报自动生成 8 张朋友圈卡片？」
+   若用户同意，加载 moments-post 技能，
+   从简报 10 条中按共鸣度筛 8 条 → 并发生成 8 张 9:16 卡片 → 逐张验收。
+   卡片存档至 D:\workbuddy\朋友圈发文\[今日日期]\images\
 ```
 
 ## 自动化提示词模板（另一台电脑 longx）
@@ -215,6 +220,11 @@ NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.e
 5. 生成 Word 文档：运行 python-docx 生成 .docx，存档至 E:\workbuddy\briefings\[今日日期]-法律简报.docx
 
 6. 推送微信：通过 Server酱推送完整简报至用户微信（SendKey: SCT366652TBlXQxdb1yp6txFGrPrS3xRrK）
+
+7. 【可选·级联朋友圈】简报生成完毕后，提示用户：「今日简报已生成。是否需要我基于简报自动生成 8 张朋友圈卡片？」
+   若用户同意，加载 moments-post 技能，
+   从简报 10 条中按共鸣度筛 8 条 → 并发生成 8 张 9:16 卡片 → 逐张验收。
+   卡片存档至 E:\workbuddy\朋友圈发文\[今日日期]\images\
 ```
 
 ---
@@ -224,3 +234,4 @@ NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.e
 - 技能目录：`C:\Users\Daniel Xue\.workbuddy\skills\legal-briefing\`（本机）| `C:\Users\longx\.workbuddy\skills\legal-briefing\`（另一台）
 - 抓取脚本：`scripts/legal_briefing.js`
 - 简报存档：`D:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（本机）| `E:\workbuddy\briefings\`（另一台）
+- **级联技能**：`moments-post`（朋友圈卡片生成器 v3.0），简报生成后可自动触发 10 选 8 → 生成 8 张 9:16 卡片 → 待用户挑选发朋友圈
