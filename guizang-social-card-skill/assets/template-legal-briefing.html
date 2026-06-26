@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="ink-classic">
+<head>
+  <meta charset="utf-8">
+  <title>法律简报 · 2026-06-24 · Social Card Set</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    /* =========================================================
+       Editorial Magazine × E-ink — M17 Legal Briefing Pipeline
+       ========================================================= */
+
+    /* ---------- 1. Theme tokens (Ink Classic) ---------- */
+    :root,
+    [data-theme="ink-classic"] {
+      --paper:     #f3f0e8;
+      --paper-2:   #ebe6da;
+      --ink:       #0a0a0b;
+      --muted:     #68625a;
+      --line:      rgba(10,10,11,.22);
+      --accent:    #111111;
+      --accent-soft: #d8d2c6;
+      --ink-rgb: 10,10,11;
+      --paper-rgb: 243,240,232;
+      --accent-rgb: 17,17,17;
+    }
+
+    /* ---------- 2. Typography stack ---------- */
+    :root {
+      --serif-zh: "Noto Serif SC", "Songti SC", "STSong", serif;
+      --serif-en: "Playfair Display", "Noto Serif SC", serif;
+      --sans-zh: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei UI", sans-serif;
+      --sans-en: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+    }
+
+    /* ---------- 3. Reset & sheet ---------- */
+    *,*::before,*::after { box-sizing: border-box; }
+    html, body { margin:0; padding:0; }
+    body {
+      background: #1a1a1a;
+      font-family: var(--sans-zh);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 64px 32px;
+    }
+    .sheet {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px;
+      background: #222;
+      border-radius: 16px;
+    }
+
+    /* ---------- 4. Poster base ---------- */
+    .poster {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .poster.xhs {
+      width: 1080px;
+    }
+
+    /* ---------- 5. Content layout ---------- */
+    .content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      color: var(--ink);
+    }
+    .stack { display: flex; flex-direction: column; }
+    .stack.gap-3 { gap: 36px; }
+
+    /* ---------- 6. Typography ---------- */
+    .kicker {
+      font-family: var(--mono);
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+    .h-xl {
+      font-family: var(--serif-zh);
+      font-size: 88px;
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: 0.12em;
+      margin: 0;
+      color: var(--ink);
+    }
+    .body {
+      font-family: var(--serif-zh);
+      font-size: 24px;
+      line-height: 1.7;
+      color: rgba(var(--ink-rgb), .72);
+      margin: 0;
+    }
+
+    /* ---------- 7. Pipeline vertical (M17) ---------- */
+    .pipeline-v {
+      display: flex;
+      flex-direction: column;
+    }
+    .pipeline-v .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .pipeline-v .step-nb {
+      font-family: var(--mono);
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 56px;
+    }
+    .pipeline-v .step-title {
+      font-family: var(--serif-zh);
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+    }
+    .pipeline-v .step-desc {
+      font-family: var(--serif-zh);
+      font-size: 24px;
+      line-height: 1.6;
+      color: rgba(var(--ink-rgb), .72);
+      margin: 0;
+    }
+
+    /* =========================================================
+       M17 Legal Briefing Pipeline — Card-specific overrides
+       ========================================================= */
+
+    /* All M17 cards use these locked parameters */
+    /* --- M17 Base: kicker ⇢ title ⇢ pipeline ⇢ 应对建议 flow --- */
+    #xhs-02 .content,
+    #xhs-03 .content,
+    #xhs-04 .content,
+    #xhs-05 .content,
+    #xhs-06 .content,
+    #xhs-07 .content,
+    #xhs-08 .content {
+      padding: 48px 88px 48px;
+      justify-content: flex-start;
+      gap: 18px;
+    }
+
+    #xhs-02 .kicker, #xhs-03 .kicker, #xhs-04 .kicker,
+    #xhs-05 .kicker, #xhs-06 .kicker, #xhs-07 .kicker, #xhs-08 .kicker {
+      margin-bottom: 24px;
+    }
+
+    #xhs-02 .h-xl, #xhs-03 .h-xl, #xhs-04 .h-xl,
+    #xhs-05 .h-xl, #xhs-06 .h-xl, #xhs-07 .h-xl, #xhs-08 .h-xl {
+      margin-bottom: 24px;
+    }
+
+    /* --- Per-card density overrides (adjust gap when text amount differs) --- */
+    /* Dense cards (long body text) — tighter */
+    #xhs-02 .content, #xhs-03 .content, #xhs-07 .content { gap: 18px; }
+    #xhs-02 .pipeline-v, #xhs-03 .pipeline-v, #xhs-07 .pipeline-v { gap: 12px; }
+    /* Medium cards — default */
+    #xhs-04 .content, #xhs-05 .content, #xhs-06 .content { gap: 22px; }
+    #xhs-04 .pipeline-v, #xhs-05 .pipeline-v, #xhs-06 .pipeline-v { gap: 14px; }
+    /* Light cards (short body text) — looser */
+    #xhs-08 .content { gap: 28px; }
+    #xhs-08 .pipeline-v { gap: 16px; }
+
+    #xhs-02 .pipeline-v .step, #xhs-03 .pipeline-v .step,
+    #xhs-04 .pipeline-v .step, #xhs-05 .pipeline-v .step,
+    #xhs-06 .pipeline-v .step, #xhs-07 .pipeline-v .step, #xhs-08 .pipeline-v .step {
+      padding-bottom: 10px;
+    }
+
+    #xhs-02 .pipeline-v .step-title, #xhs-03 .pipeline-v .step-title,
+    #xhs-04 .pipeline-v .step-title, #xhs-05 .pipeline-v .step-title,
+    #xhs-06 .pipeline-v .step-title, #xhs-07 .pipeline-v .step-title, #xhs-08 .pipeline-v .step-title {
+      font-size: 48px;
+      margin-bottom: 6px;
+    }
+
+    #xhs-02 .pipeline-v .step-desc, #xhs-03 .pipeline-v .step-desc,
+    #xhs-04 .pipeline-v .step-desc, #xhs-05 .pipeline-v .step-desc,
+    #xhs-06 .pipeline-v .step-desc, #xhs-07 .pipeline-v .step-desc, #xhs-08 .pipeline-v .step-desc {
+      font-size: 38px;
+      line-height: 1.48;
+    }
+
+    #xhs-02 .body, #xhs-03 .body, #xhs-04 .body,
+    #xhs-05 .body, #xhs-06 .body, #xhs-07 .body, #xhs-08 .body {
+      font-size: 38px;
+      line-height: 1.48;
+      margin: 0;
+    }
+
+    /* Cover card (xhs-01) — uses centered layout */
+    #xhs-01 .content {
+      padding: 96px 88px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 48px;
+    }
+    #xhs-01 .h-xl {
+      font-size: 120px;
+      line-height: 1.08;
+    }
+    #xhs-01 .subtitle {
+      font-family: var(--serif-zh);
+      font-size: 40px;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+    #xhs-01 .date {
+      font-family: var(--mono);
+      font-size: 28px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+    #xhs-01 .toc {
+      font-family: var(--mono);
+      font-size: 24px;
+      line-height: 2;
+      color: rgba(var(--ink-rgb), .6);
+      margin-top: 48px;
+      text-align: left;
+      max-width: 720px;
+    }
+
+    /* Spacer to push body to bottom without overlapping */
+    .spacer {
+      flex: 1;
+      min-height: 20px;
+    }
+
+    /* Utility for spacing between sections */
+    .mb-2 { margin-bottom: 16px; }
+    .mt-auto { margin-top: auto; }
+
+    /* Ensure no issue-strip appears */
+    .issue-strip { display: none !important; }
+
+  </style>
+</head>
+<body>
+  <div class="sheet">
+
+    <!-- ============================================================
+         CARD 01 — Cover / Table of Contents (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-01">
+      <div class="content">
+        <div>
+          <p class="date">2026.06.24</p>
+          <h1 class="h-xl">今日法律观察</h1>
+          <p class="subtitle">Daily Legal Briefing</p>
+        </div>
+        <div class="toc">
+          <div>01 · 股权代持的隐名困局</div>
+          <div>02 · 对赌回购的优先购买权冲突</div>
+          <div>03 · 房产赠与的撤销权之争</div>
+          <div>04 · 股东代表诉讼的启动门槛</div>
+          <div>05 · 反商业贿赂的合规不起诉</div>
+          <div>06 · 担保登记的优先受偿边界</div>
+          <div>07 · 异宠交易的合规闭环</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARD 02 — 股权代持的隐名困局 (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-02">
+      <div class="content stack">
+        <div>
+          <p class="kicker">案例 01 · 公司法</p>
+          <h2 class="h-xl">股权代持的<br>隐名困局</h2>
+        </div>
+        <div class="pipeline-v">
+          <div class="step">
+            <div class="step-nb">01</div>
+            <div>
+              <h3 class="step-title">核心定性</h3>
+              <p class="step-desc">隐名股东仅凭代持协议约束，显名股东擅自转让股权时，善意第三人优先受保护。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">02</div>
+            <div>
+              <h3 class="step-title">法理审视</h3>
+              <p class="step-desc">工商登记具有公示公信效力，外部债权人信赖登记内容，隐名股东确权诉讼胜诉率极低。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">03</div>
+            <div>
+              <h3 class="step-title">司法实践</h3>
+              <p class="step-desc">法院倾向于保护交易安全，隐名股东需证明实际出资且其他股东过半数同意方可显名。</p>
+            </div>
+          </div>
+        </div>
+        <p class="body"><strong>应对建议：</strong>代持协议须完备且取得其他股东半数以上同意，留存出资凭证，尽早办理显名登记。</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARD 03 — 对赌回购的优先购买权冲突 (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-03">
+      <div class="content stack">
+        <div>
+          <p class="kicker">案例 02 · 投资/公司法</p>
+          <h2 class="h-xl">对赌回购的<br>优先购买权冲突</h2>
+        </div>
+        <div class="pipeline-v">
+          <div class="step">
+            <div class="step-nb">01</div>
+            <div>
+              <h3 class="step-title">核心定性</h3>
+              <p class="step-desc">对赌回购本质仍属股权转让，其他股东可依法主张优先购买权。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">02</div>
+            <div>
+              <h3 class="step-title">法理审视</h3>
+              <p class="step-desc">回购条件成就触发义务履行，但股权转让性质不因附条件而改变，优先购买权规则仍适用。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">03</div>
+            <div>
+              <h3 class="step-title">实务要点</h3>
+              <p class="step-desc">投资方行使回购权时，应通知其他股东并征询是否行使优先购买权，否则回购行为存在效力瑕疵。</p>
+            </div>
+          </div>
+        </div>
+        <p class="body"><strong>应对建议：</strong>对赌条款应增加优先购买权排除条款，或提前取得其他股东放弃优先购买权的书面确认。</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARD 04 — 房产赠与的撤销权之争 (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-04">
+      <div class="content stack">
+        <div>
+          <p class="kicker">案例 03 · 婚姻家事</p>
+          <h2 class="h-xl">房产赠与的<br>撤销权之争</h2>
+        </div>
+        <div class="pipeline-v">
+          <div class="step">
+            <div class="step-nb">01</div>
+            <div>
+              <h3 class="step-title">核心定性</h3>
+              <p class="step-desc">夫妻间赠与房产并约定放弃撤销权有效，赠与人不得反悔撤销。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">02</div>
+            <div>
+              <h3 class="step-title">法理审视</h3>
+              <p class="step-desc">放弃撤销权属意思自治范畴，赠与合同转化为有约束力的双务性质，双方均应遵守。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">03</div>
+            <div>
+              <h3 class="step-title">风险提示</h3>
+              <p class="step-desc">未过户前赠与人仍可能主张法定撤销权，约定放弃不能对抗法定撤销情形。</p>
+            </div>
+          </div>
+        </div>
+        <p class="body"><strong>应对建议：</strong>房产赠与须尽快办理过户登记，迟延交付将承担赔偿责任；建议配套公证强化约束力。</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARD 05 — 股东代表诉讼的启动门槛 (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-05">
+      <div class="content stack">
+        <div>
+          <p class="kicker">案例 04 · 公司法/诉讼</p>
+          <h2 class="h-xl">股东代表诉讼的<br>启动门槛</h2>
+        </div>
+        <div class="pipeline-v">
+          <div class="step">
+            <div class="step-nb">01</div>
+            <div>
+              <h3 class="step-title">核心定性</h3>
+              <p class="step-desc">损害公司利益时股东可代表公司起诉，但须遵守前置程序规则。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">02</div>
+            <div>
+              <h3 class="step-title">前置程序</h3>
+              <p class="step-desc">股东应先书面请求监事会/董事会起诉，遭拒绝或30日内未起诉的，方可自行提起诉讼。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">03</div>
+            <div>
+              <h3 class="step-title">禁止重复</h3>
+              <p class="step-desc">公司已就同一损害行为起诉的，股东不得再行提起代表诉讼，避免重复诉讼被驳回。</p>
+            </div>
+          </div>
+        </div>
+        <p class="body"><strong>应对建议：</strong>委托前须核实公司是否已起诉同一行为，提前准备前置程序书面文件，避免程序瑕疵。</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARD 06 — 反商业贿赂的合规不起诉 (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-06">
+      <div class="content stack">
+        <div>
+          <p class="kicker">案例 05 · 刑事合规</p>
+          <h2 class="h-xl">反商业贿赂的<br>合规不起诉</h2>
+        </div>
+        <div class="pipeline-v">
+          <div class="step">
+            <div class="step-nb">01</div>
+            <div>
+              <h3 class="step-title">核心定性</h3>
+              <p class="step-desc">修正案十二加大行贿处罚力度，新增七种从重处罚情形，企业合规风险升级。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">02</div>
+            <div>
+              <h3 class="step-title">法理审视</h3>
+              <p class="step-desc">合规不起诉仅免除刑事责任，行政责任仍须承担，企业须退缴违法所得并缴纳罚款。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">03</div>
+            <div>
+              <h3 class="step-title">合规要点</h3>
+              <p class="step-desc">有效的合规体系应涵盖反舞弊政策、举报机制、审查流程与定期审计，形成闭环管理。</p>
+            </div>
+          </div>
+        </div>
+        <p class="body"><strong>应对建议：</strong>企业须建立完整的反舞弊合规体系，包括举报机制、审查流程与定期审计，从源头防控风险。</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARD 07 — 担保登记的优先受偿边界 (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-07">
+      <div class="content stack">
+        <div>
+          <p class="kicker">案例 06 · 执行/担保法</p>
+          <h2 class="h-xl">担保登记的<br>优先受偿边界</h2>
+        </div>
+        <div class="pipeline-v">
+          <div class="step">
+            <div class="step-nb">01</div>
+            <div>
+              <h3 class="step-title">核心定性</h3>
+              <p class="step-desc">担保登记不明时，优先受偿范围以登记公示内容为限，超出部分不享有优先权。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">02</div>
+            <div>
+              <h3 class="step-title">法理审视</h3>
+              <p class="step-desc">超出登记部分的债权作为普通债权处理，登记公信效力旨在保护第三人信赖利益。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">03</div>
+            <div>
+              <h3 class="step-title">实务影响</h3>
+              <p class="step-desc">利息、违约金、实现债权费用若未明确登记，执行阶段可能无法优先受偿，影响债权实现。</p>
+            </div>
+          </div>
+        </div>
+        <p class="body"><strong>应对建议：</strong>担保合同登记须覆盖全部债权范围，明确约定利息、违约金与实现费用，确保优先受偿权完整。</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARD 08 — 异宠交易的合规闭环 (3:4)
+         ============================================================ -->
+    <section class="poster xhs" id="xhs-08">
+      <div class="content stack">
+        <div>
+          <p class="kicker">案例 07 · 特种贸易/刑事</p>
+          <h2 class="h-xl">异宠交易的<br>合规闭环</h2>
+        </div>
+        <div class="pipeline-v">
+          <div class="step">
+            <div class="step-nb">01</div>
+            <div>
+              <h3 class="step-title">核心定性</h3>
+              <p class="step-desc">异宠定义与分类边界模糊，四千三百五十只涉案查获，涉及多重法律责任。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">02</div>
+            <div>
+              <h3 class="step-title">法理审视</h3>
+              <p class="step-desc">涉及CITES附录物种走私可构成走私珍贵动物罪，交易双方均可能承担刑事责任。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-nb">03</div>
+            <div>
+              <h3 class="step-title">合规要点</h3>
+              <p class="step-desc">异宠交易须审查物种保护级别、来源合法性、行政许可完备性，建立全链条合规体系。</p>
+            </div>
+          </div>
+        </div>
+        <p class="body"><strong>应对建议：</strong>异宠从业者须审查交易物种是否属受保护物种并取得行政许可，建立合规档案与溯源机制。</p>
+      </div>
+    </section>
+
+  </div><!-- /sheet -->
+</body>
+</html>
