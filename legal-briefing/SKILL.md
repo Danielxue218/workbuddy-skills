@@ -4,9 +4,9 @@ description: >
   薛龙律师专属·每日民商事法律要闻简报。
   围绕六大执业方向（婚姻家事与财富长青、司法强制执行与资产调处、
   企业反舞弊与白领刑事防御、公司治理与股权投资争议、商事仲裁与复杂争议解决、
-  现代农业与异宠特种贸易），从白名单公众号自动抓取文章，
+  现代农业与异宠特种贸易），从 36 个白名单公众号自动抓取文章，
   经两步法筛选后生成高信息密度的结构化法律简报。
-version: "2.0"
+version: "2.3"
 trigger_words:
   - 法律简报
   - 今日法律要闻
@@ -19,7 +19,7 @@ trigger_words:
   - legal briefing
 ---
 
-# 技能：每日民商事法律要闻简报 v2.0
+# 技能：每日民商事法律要闻简报 v2.1
 
 ## 功能说明
 
@@ -59,9 +59,16 @@ trigger_words:
 
 ---
 
-## 白名单公众号（29个）
+## 白名单公众号（36个）
 
-上海高院、第一法商、中国贸促、上海浦东法院、最高人民法院、君合法律评述、上海静安法院、上海国际仲裁中心、上海虹口法院、上海普陀法院、上海徐汇法院、上海律协、上海金融法院、新则、上海二中院、至正研究、上海杨浦法院、上海一中法院、诉讼艺术、天同诉讼圈、审判研究、上海检察、上海宝山法院、金杜研究、上海法治报、仲裁圈、上海长宁法院、婚姻家庭与资本市场、中国执行
+### 法院/仲裁委/检察院（13 个）
+上海高院、上海浦东法院、最高人民法院、上海静安法院、上海虹口法院、上海普陀法院、上海徐汇法院、上海金融法院、上海二中院、上海杨浦法院、上海一中法院、上海宝山法院、上海长宁法院
+
+### 律所/法律媒体（14 个）
+君合法律评述、金杜研究、天同诉讼圈、诉讼攻略、京师德禾律所、宜律无忧、牛津律师团队、至正研究、第一法商、新则、诉讼艺术、审判研究、上海法治报、仲裁圈
+
+### 专业机构/行业协会（9 个）
+中国贸促、上海国际仲裁中心、上海律协、上海检察、婚姻家庭与资本市场、中国执行、执行实务与诉讼实务、中国宠物保护协会、中国野生动物保护协会
 
 ---
 
@@ -154,6 +161,96 @@ WorkBuddy 会执行：
 
 **JSON 存档**：`D:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（本机）或 `E:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（另一台 longx）
 
+### 万能 JSON 存档（v2.3 新增 · 统一数据出口）
+
+> v2.3 将 briefing.json + m17.json + moments.json 合并为单个 `{TODAY}-full.json`，消除三文件间的重复数据。
+> Part A 写入 briefing + m17 两段；Part B（若启用）追加 moments 段；Part C 从 full.json 直接读取。
+
+**文件位置**：`{BASE}\briefings\YYYY-MM-DD-full.json`
+
+**结构**：
+```json
+{
+  "date": "YYYY-MM-DD",
+  "generated_at": "ISO 8601",
+  "pipeline": {
+    "part_a_completed": true,
+    "part_b_completed": false,
+    "part_c_completed": false,
+    "gemini_enabled": false
+  },
+  "briefing": {
+    "total_articles": 35,
+    "selected_count": 10,
+    "direction_coverage": ["公司治理", "强制执行", "婚姻家事"],
+    "articles": [
+      {
+        "index": 1,
+        "title": "...",
+        "source": "公众号名称",
+        "date": "YYYY-MM-DD",
+        "url": "...",
+        "dispute_focus": "...",
+        "court_ruling": "...",
+        "application_value": "...",
+        "score": 5,
+        "source_mapped": "宜律无忧"
+      }
+    ]
+  },
+  "m17": {
+    "cases": [
+      {
+        "index": 1,
+        "kicker": "Case · 01",
+        "title": "案例主标题（≤10字）",
+        "source": "公众号映射名",
+        "points": [
+          { "title": "要点一（≤8字）", "desc": "描述（30-40字）" },
+          { "title": "要点二", "desc": "..." },
+          { "title": "要点三", "desc": "..." },
+          { "title": "要点四", "desc": "..." }
+        ],
+        "advice": "应对建议：不含推销用语"
+      }
+    ]
+  },
+  "moments": {
+    "gemini_enabled": false,
+    "cards_generated": 0,
+    "selected": [],
+    "image_paths": {}
+  },
+  "output_paths": {
+    "briefing_docx": "...",
+    "gemini_cards_dir": "...",
+    "m17_cards_dir": "..."
+  }
+}
+```
+
+**生成时机**：
+- `briefing` + `m17`：Part A 完成后写入（简报 10 条 → 共鸣度评分 → 筛 8 条 → 生成 m17.cases）
+- `moments`：Part B 完成后追加（Gemini 卡片路径 + 元数据）
+- `pipeline`：各 Part 完成后更新对应 flag
+
+### M17 JSON 从简报直接生成（v2.3 新增 · 不与 moments-post 耦合）
+
+> 此前 m17.json 必须等 moments-post 完成筛选。v2.3 改为 Part A 直接从简报 10 条中评分筛 8 条并生成 m17 数据，存入 full.json。Part C 可立即启动，与 Part B（Gemini 卡片）完全并行。
+
+**评分规则**（与 moments-post 相同）：
+| 加分项 | 分值 |
+|--------|------|
+| 企业主/实控人直接法律风险 | +2 |
+| 高净值客户/家庭财富保护 | +2 |
+| 当前热门行业 | +1 |
+| 反舞弊/合规不起诉 | +1 |
+| 强制执行/拒执罪 | +1 |
+| 婚姻家事经济补偿 | +1 |
+
+取前 8 条，跳过共鸣度最低的 2 条。`source_mapped` 按映射表匹配（股权代持→宜律无忧、对赌→诉讼攻略 等）。
+`advice` 从 `application_value` 提取，删除「开拓XX产品」「可转化为XX法律服务产品」等推销用语。
+
 ---
 
 ## 命令行参数
@@ -203,7 +300,7 @@ NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.e
    卡片存档至 D:\workbuddy\朋友圈发文\[今日日期]\images\
 ```
 
-## 自动化提示词模板（另一台电脑 longx）
+## 自动化提示词模板（另一台电脑 longx · v2.3 升级版）
 
 ```
 运行法律简报技能，生成今日民商事法律要闻简报。必须完成以下全部步骤：
@@ -215,23 +312,70 @@ NODE_OPTIONS="" "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\node.e
 
 3. 【必须】在 WorkBuddy 对话框中逐条展示完整简报全文——不可跳过！
 
-4. 保存 JSON：E:\workbuddy\briefings\[今日日期]-briefing.json
+4. 保存统一 JSON：
+   - 按万能 JSON 结构生成 {TODAY}-full.json
+   - briefing 段：10 条简报文章（含共鸣度评分）
+   - m17 段：对 10 条评分筛 8 条 → 生成 M17 JSON（points[4] + advice，删除推销用语）
+   - pipeline.part_a_completed = true
+   - 保存至 E:\workbuddy\briefings\[今日日期]-full.json
 
 5. 生成 Word 文档：运行 python-docx 生成 .docx，存档至 E:\workbuddy\briefings\[今日日期]-法律简报.docx
 
 6. 推送微信：通过 Server酱推送完整简报至用户微信（SendKey: SCT366652TBlXQxdb1yp6txFGrPrS3xRrK）
 
-7. 【可选·级联朋友圈】简报生成完毕后，提示用户：「今日简报已生成。是否需要我基于简报自动生成 8 张朋友圈卡片？」
-   若用户同意，加载 moments-post 技能，
-   从简报 10 条中按共鸣度筛 8 条 → 并发生成 8 张 9:16 卡片 → 逐张验收。
-   卡片存档至 E:\workbuddy\朋友圈发文\[今日日期]\images\
+7. 【级联·M17 卡片】简报生成完毕后，加载 guizang-social-card-skill，读取 full.json 的 m17 段，
+   自动渲染 8 张 M17 墨水风卡片，存档至 E:\workbuddy\朋友圈发文\[今日日期]\m17-cards\
+
+8. 【可选·Gemini 卡片】若 GEMINI_ENABLED=1，加载 moments-post 技能，基于 full.json
+   并发生成 8 张 Gemini 红黑卡，存档至 E:\workbuddy\朋友圈发文\[今日日期]\images\
 ```
 
 ---
+
+## 自动化触发后三技能全自动级联（v5 升级 · 并行 + 统一 JSON）
+
+`automation-1781840242202` 在每天 10:00 触发，全自动完成以下流水线——**不再需要任何手动操作**：
+
+```
+10:00 触发
+  ├─ Part A: legal-briefing → 简报 + {TODAY}-full.json（含 briefing + m17 两段）
+  │                                                ↓
+  ├─ Part C: guizang-social-card-skill ────────── 并行 ──────────┐
+  │          读取 full.json → 8 张 M17 E-ink 卡片                │
+  │                                                              │
+  └─ Part B: moments-post（GEMINI_ENABLED=0 默认跳过）           │
+             若启用 → 8 张 Gemini 红黑卡 + 追加 moments 段       │
+                                                                │
+                                                    M17 先出 ──┘
+                                                      ↓
+                                          Part D: 企业微信推送 M17 图片
+                                                + Server酱 完成通知
+```
+
+**关键优化（v5 vs v4）**：
+- M17 JSON 在 Part A 直接生成（不再等 Part B），Part C 可与 Part B 并行
+- 合并为单个 `{TODAY}-full.json`，消除 briefing.json / m17.json / moments.json 三个文件
+- `GEMINI_ENABLED` 变量控制 Part B 是否执行（默认 0 跳过，节省 API 积分）
+- 企业微信原生推送 M17 卡片图片到微信（替代 Server酱 纯文字路径通知）
+
+详见：
+- `C:\Users\longx\.workbuddy\skills\moments-post\SKILL.md`（v3.2，Gemini 可选 + 读 full.json）
+- `C:\Users\longx\.workbuddy\skills\guizang-social-card-skill\SKILL.md`（M17 自动化读 full.json）
 
 ## 文件位置
 
 - 技能目录：`C:\Users\Daniel Xue\.workbuddy\skills\legal-briefing\`（本机）| `C:\Users\longx\.workbuddy\skills\legal-briefing\`（另一台）
 - 抓取脚本：`scripts/legal_briefing.js`
-- 简报存档：`D:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（本机）| `E:\workbuddy\briefings\`（另一台）
-- **级联技能**：`moments-post`（朋友圈卡片生成器 v3.0），简报生成后可自动触发 10 选 8 → 生成 8 张 9:16 卡片 → 待用户挑选发朋友圈
+- 简报存档：`E:\workbuddy\briefings\YYYY-MM-DD-briefing.json`
+- **统一 JSON**：`E:\workbuddy\briefings\YYYY-MM-DD-full.json`（v2.3 万能 JSON，含 briefing + m17 + moments）
+- **级联技能**：`C:\Users\longx\.workbuddy\skills\moments-post\`（朋友圈卡片生成器 v3.2 · Gemini 可选）
+- **终端输出**：`E:\workbuddy\朋友圈发文\YYYY-MM-DD\m17-cards\`（M17 E-ink 墨水风卡片）
+
+---
+
+## 版本历史
+
+- **v2.3** (2026-06-24)：新增万能 JSON（`{TODAY}-full.json`）统一数据出口，消除 briefing/m17/moments 三文件重复；M17 JSON 从简报直接评分生成（不再依赖 moments-post），Part C 可与 Part B 并行；新增 `GEMINI_ENABLED` 开关
+- **v2.2** (2026-06-24)：级联升级为三技能全自动流水线（legal-briefing → moments-post → guizang-social-card-skill M17），不再需要任何手动触发；更新级联说明和文件位置
+- **v2.1** (2026-06-23)：白名单从 29 → 36（新增 宜律无忧、诉讼攻略、执行实务与诉讼实务、牛津律师团队、京师德禾律所、中国宠物保护协会、中国野生动物保护协会，与 moments-post v3.1 出处映射表对齐）
+- v2.0 (2026-06-22)：初始版本，29 白名单 + 两步筛选法 + Word 文档 + Server酱 推送

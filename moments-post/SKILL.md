@@ -2,11 +2,12 @@
 name: moments-post
 description: |
   薛龙律师专属·每日法律简报 8 张朋友圈卡片生成器。
-  基于 legal-briefing 技能产出的 YYYY-MM-DD-briefing.json，
-  智能筛选与企业主/高净值客户共鸣度最高的 8 条案例，
-  一次输出 8 张 9:16 竖版内容卡片（黑底+香槟金+砖红，红圈所合伙人品牌风）。
+  基于 legal-briefing 技能产出的 YYYY-MM-DD-full.json，
+  受 GEMINI_ENABLED 开关控制（默认关闭以节省 API 积分），
+  启用时生成 8 张 9:16 竖版 Gemini 红黑卡片（黑底+香槟金+砖红，红圈所合伙人品牌风），
+  并将 moments 元数据追加回 full.json。
   用户直接挑图发朋友圈，不再单独配文。
-version: "3.0"
+version: "3.2"
 trigger_words:
   - 朋友圈发文
   - 生成朋友圈
@@ -18,18 +19,22 @@ trigger_words:
   - 8 张卡片
 ---
 
-# 技能：每日法律简报 8 张朋友圈卡片生成器 v3.0
+# 技能：每日法律简报 8 张朋友圈卡片生成器 v3.2
 
 ## 功能说明
 
-读取当天 `legal-briefing` 技能产出的简报 JSON，从 10 条要闻中**自动筛 8 条**与企业主/高净值客户共鸣度最高的案例，一次性并发生成 **8 张 9:16 竖版内容卡片**。
+读取当天 `legal-briefing` 技能产出的**统一 JSON**（`YYYY-MM-DD-full.json`），受 `GEMINI_ENABLED` 变量控制：
 
-**v3.0 关键变更（相对 v2.0）**：
-- v2 prompt 只有"加粗""正文字号"等口头约束 → Gemini 实际跑图时落款副会做小、页眉会变成第二主标题
-- v3 引入**像素级硬约束**：y 坐标分区 + 三档字号制 + 显式"严禁"项，三者缺一 Gemini 必跑偏
-- v3 8 张**全部通过像素级验收**（2026-06-22 验证：8/8 落款副=正文=48px、薛龙=96px、页眉=96px）
+- `GEMINI_ENABLED=0`（默认）：**跳过 Gemini 卡片生成**，仅输出筛选结果 + 追加 moments 元数据到 full.json
+- `GEMINI_ENABLED=1`：从 full.json 读取 briefing 段，按共鸣度筛 8 条，并发生成 8 张 Gemini 红黑卡片，追加 moments 段到 full.json
 
-**本技能唯一责任：读取简报 JSON → 智能筛 8 条 → 并发生成 8 张 9:16 卡片 → 存档**
+**v3.2 关键变更（相对 v3.1）**：
+- Gemini 卡片生成改为**可选**（`GEMINI_ENABLED` 开关），默认跳过以节省 API 积分
+- 数据源从 `briefing.json` 改为 `{TODAY}-full.json`（统一 JSON）
+- M17 JSON 生成逻辑**移至 legal-briefing v2.3**（Part A 直接生成，不再依赖本技能）
+- 筛选结果写入 full.json 的 `moments` 段
+
+**本技能唯一责任：读取 full.json → 若启用则并发生成 8 张 Gemini 卡片 → 追加 moments 元数据到 full.json**
 
 ---
 
@@ -215,34 +220,60 @@ y 坐标分区（9:16 2K 画布共 1920px 高）：
 ## 输出与存档
 
 ### 必须在 WorkBuddy 对话框中输出
-- **8 张卡片图片**（按顺序逐张展示）
+- **8 张卡片图片**（按顺序逐张展示，仅在 GEMINI_ENABLED=1 时）
 - 每张配 1 行说明：序号 + 主标题 + 公众号出处
 
 ### 文件存档
 
 > **双机路径**：本机 Daniel Xue 用 D 盘，另一台 longx 用 E 盘。
+> **数据源**：从 `{DRIVE}:\workbuddy\briefings\YYYY-MM-DD-full.json` 读取 briefing 段。
 
-- **8 张卡片图**：`{DRIVE}:\workbuddy\朋友圈发文\YYYY-MM-DD\images\YYYY-MM-DD-NN-标题.png`（N=01-08）
+- **8 张卡片图**：`{DRIVE}:\workbuddy\朋友圈发文\YYYY-MM-DD\images\YYYY-MM-DD-NN-标题.png`（N=01-08，仅在 GEMINI_ENABLED=1 时生成）
   - 本机：`D:\workbuddy\朋友圈发文\...`
   - 另一台 longx：`E:\workbuddy\朋友圈发文\...`
 - **历史归档**：`{DRIVE}:\workbuddy\朋友圈发文\YYYY-MM-DD\images\_legacy\` + `\_legacy_v{n}\`（保留所有旧版本）
-- **JSON 元数据**：`{DRIVE}:\workbuddy\朋友圈发文\YYYY-MM-DD\YYYY-MM-DD-moments.json`（含 8 条案例 + 8 张图路径）
+- **统一 JSON 回写**：将筛选结果 + 图片路径写回 `{DRIVE}:\workbuddy\briefings\YYYY-MM-DD-full.json` 的 `moments` 段，并更新 `pipeline.part_b_completed = true`
+
+### Moments 段结构（写入 full.json）
+
+```json
+{
+  "moments": {
+    "gemini_enabled": true,
+    "cards_generated": 8,
+    "selected": [
+      {
+        "index": 1,
+        "score": 5,
+        "title": "股权代持的显名化路径",
+        "source": "宜律无忧",
+        "image_path": "E:\\workbuddy\\朋友圈发文\\2026-06-24\\images\\2026-06-24-01-股权代持的显名化路径.png"
+      }
+    ],
+    "image_paths": {
+      "01": "E:\\workbuddy\\朋友圈发文\\...\\...png",
+      "02": "...",
+      "...": "...",
+      "08": "..."
+    }
+  }
+}
+```
 
 ### 命名规范
 ```
 {DRIVE}:\workbuddy\朋友圈发文\
   └── YYYY-MM-DD\
-       ├── YYYY-MM-DD-moments.json
-       └── images\
-            ├── YYYY-MM-DD-01-股权代持的显名化路径.png
-            ├── YYYY-MM-DD-02-对赌回购义务的边界.png
-            ├── YYYY-MM-DD-03-股东个人卡走账的连带责任.png
-            ├── YYYY-MM-DD-04-拒执罪前置转移的认定.png
-            ├── YYYY-MM-DD-05-反商业贿赂的合规不起诉.png
-            ├── YYYY-MM-DD-06-股东代表诉讼的启动门槛.png
-            ├── YYYY-MM-DD-07-爱宠精神损害赔偿的认定.png
-            ├── YYYY-MM-DD-08-异宠交易的合规闭环.png
-            └── _legacy\                       (旧版本归档)
+       ├── images\
+       │    ├── YYYY-MM-DD-01-股权代持的显名化路径.png
+       │    ├── YYYY-MM-DD-02-对赌回购义务的边界.png
+       │    ├── ... (仅 GEMINI_ENABLED=1 时生成)
+       │    └── _legacy\                       (旧版本归档)
+       └── m17-cards\
+            ├── 01-封面-今日法律观察.png
+            ├── 02-xxx.png
+            ├── ...
+            └── 08-xxx.png
 ```
 
 ---
@@ -349,18 +380,25 @@ unset NODE_OPTIONS && "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\
 
 ## 使用方式
 
+### GEMINI_ENABLED 开关（v3.2 新增）
+
+> 环境变量或自动化 prompt 中设置 `GEMINI_ENABLED`：
+> - `0`（默认）：跳过 Gemini 卡片生成，仅输出筛选结果 + 写入 moments 元数据
+> - `1`：完整执行——筛 8 条 → 并发生成 8 张 Gemini 卡片 → 回写 full.json
+
 ### 标准流程
-1. 先运行 `legal-briefing` 技能生成当天的 briefing JSON
-   - 本机：`D:\workbuddy\briefings\YYYY-MM-DD-briefing.json`
-   - 另一台 longx：`E:\workbuddy\briefings\YYYY-MM-DD-briefing.json`
+1. 先运行 `legal-briefing` 技能生成当天的统一 JSON
+   - 本机：`D:\workbuddy\briefings\YYYY-MM-DD-full.json`
+   - 另一台 longx：`E:\workbuddy\briefings\YYYY-MM-DD-full.json`
 2. 对 WorkBuddy 说："生成今天的朋友圈" 或 "8 张卡片" 或 "朋友圈发文"
 3. WorkBuddy 自动：
-   - 读取当天的 briefing JSON
-   - 按共鸣度评分筛 8 条（跳过共鸣度最低的 2 条）
-   - 为每条生成 1 张 9:16 卡片
-   - 8 张并发跑图片生成
-   - **逐张 Read 工具验收**（关键）
-   - 在对话框按顺序展示 8 张图
+   - 读取当天的 full.json 的 briefing 段
+   - 若 GEMINI_ENABLED=1：按共鸣度评分筛 8 条（跳过共鸣度最低的 2 条）
+   - 若 GEMINI_ENABLED=1：为每条生成 1 张 9:16 卡片
+   - 若 GEMINI_ENABLED=1：8 张并发跑图片生成
+   - 若 GEMINI_ENABLED=1：**逐张 Read 工具验收**（关键）
+   - 若 GEMINI_ENABLED=1：在对话框按顺序展示 8 张图
+   - 回写筛选结果 + 图片路径到 full.json 的 moments 段
    - 存档 8 张图到 `{DRIVE}:\workbuddy\朋友圈发文\YYYY-MM-DD\images\`（本机 D 盘，另一台 E 盘）
    - 旧版本归档到 `_legacy/v{n}_描述/`
 
@@ -375,14 +413,20 @@ unset NODE_OPTIONS && "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\
 
 - 技能目录：`C:\Users\Daniel Xue\.workbuddy\skills\moments-post\`（本机）| `C:\Users\longx\.workbuddy\skills\moments-post\`（另一台）
 - 输出：`D:\workbuddy\朋友圈发文\YYYY-MM-DD\images\`（本机）| `E:\workbuddy\朋友圈发文\YYYY-MM-DD\images\`（另一台 longx）
-- 简报源 JSON：`D:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（本机）| `E:\workbuddy\briefings\YYYY-MM-DD-briefing.json`（另一台 longx）
+- 统一 JSON 源：`D:\workbuddy\briefings\YYYY-MM-DD-full.json`（本机）| `E:\workbuddy\briefings\YYYY-MM-DD-full.json`（另一台 longx）
 
 ---
 
-## 自动化提示词模板（嵌入 automation-1781840242202 · v3 升级版）
+## 自动化提示词模板（嵌入 automation-1781840242202 · v3.2 升级版）
 
 ```
-7.9 【必须】从 10 条要闻筛 8 条（共鸣度优先，跳过最弱 2 条），
+7. 【GEMINI_ENABLED 判断】读取环境变量 GEMINI_ENABLED：
+   - GEMINI_ENABLED=0 → 跳过 Part B，仅输出筛选结果到 full.json moments 段
+   - GEMINI_ENABLED=1 → 执行以下全部步骤
+
+7.1 读取统一 JSON：{BASE}\briefings\{TODAY}-full.json 的 briefing 段
+
+7.2 从 10 条要闻筛 8 条（共鸣度优先，跳过最弱 2 条），
     为每条生成 1 张 9:16 内容卡片图片。
     必须遵循 v3 视觉规范（像素级硬约束）：
     - 配色：#121212 (80%) / #E5E5E5 (15%) / #D25D38 (5%)
@@ -410,12 +454,17 @@ unset NODE_OPTIONS && "C:\Users\longx\.workbuddy\binaries\node\versions\22.12.0\
     unset NODE_OPTIONS && node "...generate_image.js" -p "{v3 完整 prompt}" \
       -f "E:\workbuddy\朋友圈发文\YYYY-MM-DD\images\YYYY-MM-DD-NN-标题.png" \
       -a 9:16 -r 2K
+
+7.3 回写 full.json：将筛选结果（8 条 selected）+ 图片路径写入 full.json 的 moments 段
+    设置 pipeline.part_b_completed = true
 ```
 
 ---
 
 ## 版本历史
 
+- **v3.2** (2026-06-24)：Gemini 卡片生成改为 `GEMINI_ENABLED` 可选开关（默认关闭以节省 API 积分）；数据源从 `briefing.json` 改为 `{TODAY}-full.json`；M17 JSON 生成移至 legal-briefing v2.3；筛选结果回写 full.json 的 moments 段
+- **v3.1** (2026-06-24)：新增 `YYYY-MM-DD-m17.json` 输出，定义 M17 JSON 结构规范，供 `guizang-social-card-skill` 自动化级联；目录结构增加 `m17-cards/`
 - **v3.0** (2026-06-22)：像素级硬约束（y 坐标 + 三档字号 + 显式严禁项），8/8 验证通过
 - v2.0 (2026-06-22)：页眉-主标题-3 段-出处-落款 5 段式，6/8 张失败
 - v1.0 (2026-06-22)：PIL 纯黑版，被用户否决
