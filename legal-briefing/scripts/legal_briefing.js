@@ -1,13 +1,30 @@
 #!/usr/bin/env node
 
 /**
- * 民商事法律简报生成器 v2.0
- * 
- * 围绕薛龙律师六大执业方向，基于29个白名单公众号+补充关键词搜索，
- * 经两步法筛选后输出高信息密度结构化简报 Prompt。
- * 
+ * 民商事法律简报生成器 v2.4
+ *
+ * 围绕薛龙律师六大执业方向，从白名单公众号自动抓取文章，
+ * 经来源优先级排序、一账号一篇去重、关键词筛选后，
+ * 输出高信息密度结构化简报 Prompt。
+ *
+ * v2.4 变更：来源优先级重构 + 日期窗口放宽 + 关键词筛选放宽
+ *   1. 来源优先级：白名单法院/仲裁（1）> 白名单外法院公众号（2）
+ *                       > 头部红圈律所（天同/金杜/君合）（3）
+ *                       > 白名单其他律所/机构（4）> 法律类非白名单（5）
+ *   2. 日期窗口：默认今日，不足 10 条时自动放宽到最近 3 天
+ *   3. 关键词筛选放宽：白名单池不足时，降低关键词门槛（仅标题命中即通过）
+ *   4. 六大方向筛选放宽：删除刑事/行政诉讼等实务词排除，仅过滤宣传稿
+ *   5. 一账号一篇规则：法院/仲裁账号允许一天最多 2 篇，其他仍限制 1 篇
+ *
+ * v2.3 变更：白名单优先模式（默认开启）
+ *   --strict-whitelist（默认）：仅采纳白名单公众号来源的文章
+ *     · 白名单账号搜索（Tier 1）结果：全部保留（来源为白名单）
+ *     · 补充关键词搜索（Tier 2）结果：仅保留来源为白名单公众号的
+ *     · 兜底：若白名单池 < 10 条，才放宽至关键词命中的法律类来源
+ *   --no-strict-whitelist：沿用 v2.0 逻辑（白名单+关键词全网搜索，来源不限）
+ *
  * 用法：
- *   node legal_briefing.js [--whitelist "上海高院,北京仲裁委,..."] [--output result.json]
+ *   node legal_briefing.js [--no-strict-whitelist] [--whitelist "上海高院,..."] [--output result.json]
  */
 
 const https = require('https');
@@ -34,6 +51,30 @@ const WHITELIST_ACCOUNTS = [
 const DEFAULT_ACCOUNTS = [
   '北京仲裁委员会', '广东省高级人民法院', '中国国际经济贸易仲裁委员会',
   '深圳国际仲裁院', '武汉仲裁委员会',
+];
+
+// ─────────────────────────────────────────────
+// 来源优先级分层（用于最终排序）
+// ─────────────────────────────────────────────
+
+// 法院/审判/检察/执行等官方司法来源（优先级最高）
+const COURT_SOURCES = [
+  '上海高院', '上海浦东法院', '最高人民法院', '上海静安法院',
+  '上海虹口法院', '上海普陀法院', '上海徐汇法院', '上海二中院',
+  '上海杨浦法院', '上海一中法院', '上海检察', '上海宝山法院',
+  '上海长宁法院', '审判研究', '上海金融法院', '中国执行',
+  '广东省高级人民法院', '上海法治报', '第一法商',
+];
+
+// 仲裁机构（优先级次之）
+const ARBITRATION_SOURCES = [
+  '上海国际仲裁中心', '北京仲裁委员会', '中国国际经济贸易仲裁委员会',
+  '深圳国际仲裁院', '武汉仲裁委员会', '仲裁圈',
+];
+
+// 头部红圈/精品律所（优先级高于其他白名单律所）
+const TOP_TIER_LAW_FIRMS = [
+  '天同诉讼圈', '金杜研究', '君合法律评述',
 ];
 
 // ─────────────────────────────────────────────
@@ -113,15 +154,13 @@ const INCLUDE_KEYWORDS = [
   '许可证', 'CITES', '动物保护', '畜牧', '水产', '种业',
 ];
 
-// 一票否决黑名单
+// 一票否决黑名单（仅过滤宣传稿/非实务内容，法律实务类文章均放开）
 const EXCLUDE_KEYWORDS = [
   '党建', '党委', '调研', '表彰', '慰问', '参观', '学习贯彻', '政法',
   '扫黑除恶', '扫黑', '黑恶势力', '精准扶贫', '乡村振兴', '援藏', '援疆',
   '行政会议', '机关党委', '政治教育', '廉政', '纪检', '监察', '法官荣誉',
   '先进典型', '优秀法官', '道德讲堂', '演讲比赛', '征文', '知识竞赛',
   '节日祝福', '温馨提示', '放假通知', '招聘公告', '人员调整',
-  '刑事', '行政诉讼', '行政处罚', '行政复议', '刑法', '刑庭',
-  '毒品', '诈骗', '抢劫', '盗窃', '故意伤害',
 ];
 
 // ─────────────────────────────────────────────
@@ -317,6 +356,82 @@ function legalFilter(article) {
   return false;
 }
 
+// 白名单来源校验（精确匹配 + 双向子串匹配，处理"上海高级人民法院"↔"上海高院"等缩写差异）
+function isWhitelistSource(source) {
+  if (!source) return false;
+  const s = source.trim();
+  for (const wl of WHITELIST_ACCOUNTS) {
+    if (s === wl || s.includes(wl) || wl.includes(s)) return true;
+  }
+  return false;
+}
+
+// 法律类来源启发式判断（用于兜底放宽时的质量门槛）
+// 来源名含：律师/律所/法院/仲裁/法学/研究/检察/司法/诉讼/合规/审判 等法律标识词
+function looksLikeLegalSource(source) {
+  if (!source) return false;
+  const markers = ['律师', '律所', '法院', '仲裁', '法学', '研究', '检察',
+                   '司法', '诉讼', '合规', '审判', '法', '法律', '法务', '法商'];
+  const s = source.trim();
+  return markers.some(m => s.includes(m));
+}
+
+// 法院/审判/检察来源校验（精确+双向子串匹配）
+function isCourtSource(source) {
+  if (!source) return false;
+  const s = source.trim();
+  for (const cs of COURT_SOURCES) {
+    if (s === cs || s.includes(cs) || cs.includes(s)) return true;
+  }
+  return false;
+}
+
+// 仲裁机构来源校验（精确+双向子串匹配）
+function isArbitrationSource(source) {
+  if (!source) return false;
+  const s = source.trim();
+  for (const ar of ARBITRATION_SOURCES) {
+    if (s === ar || s.includes(ar) || ar.includes(s)) return true;
+  }
+  return false;
+}
+
+// 白名单外法院/审判来源识别（来源含法院/检察/执行等词，但不在 WHITELIST_ACCOUNTS 中）
+function isNonWhitelistCourtSource(source) {
+  if (!source) return false;
+  const s = source.trim();
+  // 先排除白名单内已有账号
+  if (isWhitelistSource(s)) return false;
+  // 识别法院/审判/检察/执行相关来源
+  const courtMarkers = ['法院', '中院', '高院', '检察', '执行', '审判', '法庭', ' Judicial', '仲裁'];
+  return courtMarkers.some(m => s.includes(m));
+}
+
+// 头部红圈/精品律所识别
+function isTopTierLawFirm(source) {
+  if (!source) return false;
+  const s = source.trim();
+  return TOP_TIER_LAW_FIRMS.some(t => s === t || s.includes(t) || t.includes(s));
+}
+
+// 来源优先级评分：数字越小优先级越高（v2.4 重构）
+function getSourcePriority(source) {
+  if (!source) return 99;
+  const s = source.trim();
+  // 1. 白名单法院/仲裁/审判/检察来源（最高优先级）
+  if (isCourtSource(s) || isArbitrationSource(s)) return 1;
+  // 2. 白名单外法院/审判/检察公众号（通过关键词搜索捕捞）
+  if (isNonWhitelistCourtSource(s)) return 2;
+  // 3. 头部红圈/精品律所（天同/金杜/君合）
+  if (isTopTierLawFirm(s)) return 3;
+  // 4. 白名单其他律所/机构
+  if (isWhitelistSource(s)) return 4;
+  // 5. 法律类非白名单公众号（兜底）
+  if (looksLikeLegalSource(s)) return 5;
+  // 99. 其他来源（仅关键词筛选放宽时才会进入）
+  return 99;
+}
+
 function dedup(articles) {
   const seen = new Set();
   return articles.filter(a => {
@@ -344,7 +459,7 @@ function buildBriefingPrompt(articles, date, targetDate) {
     ? `⚠️ 重要：本次简报仅包含发布日期为 ${targetDate} 的文章。请先核对每篇文章的"发布时间"字段，只处理该日期的文章，其他日期的文章直接忽略。`
     : `请综合判断文章时效，优先处理近24小时内发布的文章。`;
 
-  return `# 民商事法律要闻简报任务 v2.0
+  return `# 民商事法律要闻简报任务 v2.4
 
 今日简报日期：${targetDate || date}
 ${dateInstruction}
@@ -457,6 +572,8 @@ function parseArgs(argv) {
       i++;
     } else if (argv[i] === '--no-filter') {
       args.noFilter = true;
+    } else if (argv[i] === '--no-strict-whitelist') {
+      args.noStrictWhitelist = true;
     } else if (argv[i] === '--mode' && argv[i + 1]) {
       args.mode = argv[i + 1];
       i++;
@@ -505,21 +622,25 @@ async function main() {
   const chinaToday = new Date(today.getTime() + 8 * 3600 * 1000);
   const dateStr = chinaToday.toISOString().slice(0, 10);
 
-  process.stderr.write(`\n=== Legal Briefing v2.0 ===\n`);
+  const strictWhitelist = !(args.noStrictWhitelist || false);
+
+  process.stderr.write(`\n=== Legal Briefing v2.4 ===\n`);
   process.stderr.write(`Date: ${targetDate || dateStr}\n`);
   process.stderr.write(`Accounts: ${accounts.length}\n`);
   process.stderr.write(`Max/account: ${maxPerAccount}\n`);
   process.stderr.write(`Suppl keywords: ${SUPPLEMENT_KEYWORDS.length}\n`);
+  process.stderr.write(`Strict whitelist: ${strictWhitelist}\n`);
   if (targetDate) process.stderr.write(`Date filter: ${targetDate}\n`);
   process.stderr.write('\n');
 
   let allArticles = [];
 
-  // 1. 白名单公众号搜索
+  // 1. 白名单公众号搜索（Tier 1 · 来源保证为白名单账号）
   for (const account of accounts) {
-    process.stderr.write(`[Account] ${account}\n`);
+    process.stderr.write(`[Account·Tier1] ${account}\n`);
     try {
       const results = await searchWechat(account, maxPerAccount);
+      results.forEach(a => a._tier = 1);
       process.stderr.write(`  -> ${results.length} articles\n`);
       allArticles.push(...results);
       await sleep(800 + Math.random() * 600);
@@ -528,11 +649,12 @@ async function main() {
     }
   }
 
-  // 2. 六大方向补充关键词搜索
+  // 2. 六大方向补充关键词搜索（Tier 2 · 白名单优先模式下仅用于发现白名单账号遗漏的文章）
   for (const kw of SUPPLEMENT_KEYWORDS) {
-    process.stderr.write(`[Keyword] ${kw}\n`);
+    process.stderr.write(`[Keyword·Tier2] ${kw}\n`);
     try {
       const results = await searchWechat(kw, 5);
+      results.forEach(a => a._tier = 2);
       process.stderr.write(`  -> ${results.length} articles\n`);
       allArticles.push(...results);
       await sleep(700 + Math.random() * 500);
@@ -542,21 +664,135 @@ async function main() {
   }
 
   process.stderr.write(`\nTotal fetched: ${allArticles.length}\n`);
+  const t1 = allArticles.filter(a => a._tier === 1).length;
+  const t2 = allArticles.filter(a => a._tier === 2).length;
+  process.stderr.write(`Tier1 (whitelist accounts): ${t1} | Tier2 (supplement keywords): ${t2}\n`);
 
-  // 3. 日期过滤
+  // 3. 日期过滤（v2.4：默认今日，不足时自动放宽到最近 3 天）
+  let dateWindow = [dateStr];
   if (targetDate) {
-    const beforeCount = allArticles.length;
+    // 如果指定了日期参数，严格控制
     allArticles = allArticles.filter(a => a.datetime === targetDate);
-    process.stderr.write(`Date filter (${targetDate}): ${beforeCount} -> ${allArticles.length}\n`);
+    process.stderr.write(`Date filter (${targetDate}): ${allArticles.length}\n`);
+  } else {
+    // 默认：保留今日 + 最近 2 天（共 3 天窗口）
+    // 注意：datetime 解析失败的（null/空）予以保留，排序时放后面
+    const d = new Date(chinaToday);
+    const dates = [dateStr];
+    for (let i = 1; i <= 2; i++) {
+      d.setDate(d.getDate() - 1);
+      dates.push(d.toISOString().slice(0, 10));
+    }
+    dateWindow = dates;
+    const beforeDateFilter = allArticles.length;
+    allArticles = allArticles.filter(a => {
+      if (!a.datetime) return true; // 日期解析失败，保留
+      return dates.includes(a.datetime);
+    });
+    process.stderr.write(`Date filter (${dates.join(', ')} + unknown dates): ${beforeDateFilter} -> ${allArticles.length}\n`);
   }
 
   // 4. 去重
   allArticles = dedup(allArticles);
   process.stderr.write(`After dedup: ${allArticles.length}\n`);
 
-  // 5. 法务筛选
-  let filtered = noFilter ? allArticles : allArticles.filter(legalFilter);
-  process.stderr.write(`After legal filter: ${filtered.length}\n\n`);
+  // 5. 法务筛选 + 来源优先级排序（v2.4 重构）
+  let filtered = [];
+  if (noFilter) {
+    filtered = allArticles;
+  } else {
+    // 5.1 严格筛选：必须命中 INCLUDE_KEYWORDS + 通过 EXCLUDE_KEYWORDS
+    const strictPool = allArticles.filter(a => legalFilter(a));
+    process.stderr.write(`Strict filter (hit INCLUDE_KEYWORDS): ${strictPool.length}\n`);
+
+    // 5.2 按来源优先级排序
+    strictPool.sort((a, b) => {
+      const pa = getSourcePriority(a.source);
+      const pb = getSourcePriority(b.source);
+      if (pa !== pb) return pa - pb;
+      // 同优先级：今日文章优先，其次按发布时间倒序
+      const da = a.datetime ? dateWindow.indexOf(a.datetime) : 999;
+      const db = b.datetime ? dateWindow.indexOf(b.datetime) : 999;
+      if (da !== db) return da - db;
+      return (b.datetime || '').localeCompare(a.datetime || '');
+    });
+
+    if (strictPool.length >= 10) {
+      filtered = strictPool;
+      process.stderr.write(`Strict pool sufficient (${strictPool.length} >= 10)\n`);
+    } else {
+      // 5.3 放宽筛选：仅标题命中 INCLUDE_KEYWORDS（不要求摘要也命中）
+      process.stderr.write(`Strict pool < 10 (${strictPool.length}), relaxing filter...\n`);
+      const relaxedPool = allArticles.filter(a => {
+        if (strictPool.includes(a)) return true; // 已严格筛选的保留
+        // 放宽条件：标题命中即通过（不检查摘要）
+        const title = a.title || '';
+        for (const kw of INCLUDE_KEYWORDS) {
+          if (title.includes(kw)) return true;
+        }
+        return false;
+      });
+      relaxedPool.sort((a, b) => {
+        const pa = getSourcePriority(a.source);
+        const pb = getSourcePriority(b.source);
+        if (pa !== pb) return pa - pb;
+        const da = a.datetime ? dateWindow.indexOf(a.datetime) : 999;
+        const db = b.datetime ? dateWindow.indexOf(b.datetime) : 999;
+        if (da !== db) return da - db;
+        return (b.datetime || '').localeCompare(a.datetime || '');
+      });
+      process.stderr.write(`Relaxed filter (title hit): ${relaxedPool.length}\n`);
+
+      if (relaxedPool.length >= 10) {
+        filtered = relaxedPool;
+      } else {
+        // 5.4 进一步放宽：允许来源好的文章直接通过（不检查关键词）
+        process.stderr.write(`Relaxed pool < 10 (${relaxedPool.length}), further relaxing...\n`);
+        const furtherRelaxedPool = allArticles.filter(a => {
+          if (relaxedPool.includes(a)) return true;
+          // 来源为法院/仲裁/白名单律所，即使关键词未命中也保留
+          const src = (a.source || '').trim();
+          return isCourtSource(src) || isArbitrationSource(src) || isWhitelistSource(src);
+        });
+        furtherRelaxedPool.sort((a, b) => {
+          const pa = getSourcePriority(a.source);
+          const pb = getSourcePriority(b.source);
+          if (pa !== pb) return pa - pb;
+          const da = a.datetime ? dateWindow.indexOf(a.datetime) : 999;
+          const db = b.datetime ? dateWindow.indexOf(b.datetime) : 999;
+          if (da !== db) return da - db;
+          return (b.datetime || '').localeCompare(a.datetime || '');
+        });
+        process.stderr.write(`Further relaxed filter (good source): ${furtherRelaxedPool.length}\n`);
+        filtered = furtherRelaxedPool;
+      }
+    }
+  }
+  process.stderr.write(`After legal filter: ${filtered.length}\n`);
+
+  // 6. 每个公众号每天最多入选篇数规则（v2.4）
+  //    法院/仲裁账号：最多 2 篇/天
+  //    其他账号（律所/机构等）：最多 1 篇/天
+  const seenSourceDate = new Map(); // key: source::date, value: count
+  filtered = filtered.filter(a => {
+    const dateKey = a.datetime || 'unknown';
+    const sourceKey = (a.source || '未知').trim();
+    const key = `${sourceKey}::${dateKey}`;
+    const current = seenSourceDate.get(key) || 0;
+
+    // 判断是否为法院/仲裁账号
+    const isCourtOrArb = isCourtSource(sourceKey) || isArbitrationSource(sourceKey);
+    const maxPerDay = isCourtOrArb ? 2 : 1;
+
+    if (current >= maxPerDay) return false;
+    seenSourceDate.set(key, current + 1);
+    return true;
+  });
+  process.stderr.write(`After source-date dedup (court/arb≤2, others≤1): ${filtered.length}\n`);
+
+  // 7. 最终取前 10 篇
+  filtered = filtered.slice(0, 10);
+  process.stderr.write(`Final top ${filtered.length} selected\n\n`);
 
   if (filtered.length === 0) {
     process.stderr.write('WARNING: 0 articles passed filter, using top 15 raw results\n');
