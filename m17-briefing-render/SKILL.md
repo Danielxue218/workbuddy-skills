@@ -52,9 +52,9 @@ trigger_words:
 - 若存在且包含 `m17.cases`（8 条），直接用于渲染。
 - 若不存在或缺少 `m17` 段，回退到 `{DATE}-briefing.json`，从 `articles` 中精选 7 篇并人工压缩为 M17 三段式。
 
-### 2. 精选 7 篇内容卡（仅备用路径需要）
+### 2. 精选 8 篇内容卡（仅备用路径需要）
 
-从 `articles` 中精选 7 篇，优先覆盖六大执业方向：
+从 `articles` 中精选 8 篇，优先覆盖六大执业方向：
 - 婚姻家事与财富长青
 - 司法强制执行与资产调处
 - 企业反舞弊与白领刑事防御
@@ -76,9 +76,11 @@ trigger_words:
 
 ### 4. 生成 index.html
 
-基于 `assets/template-legal-briefing.html`，替换 `<body>...</body>` 内的 8 个 section：
+基于 `assets/template-legal-briefing.html`，替换 `<body>...</body>` 内的 section：
 - 1 个封面 section（`id="xhs-01"`）
-- 7 个内容 section（`id="xhs-02"` ~ `id="xhs-08"`）
+- 8 个内容 section（`id="xhs-02"` ~ `id="xhs-09"`）
+
+**模板 CSS 注意**：模板中所有内容卡片特定样式（`.content` padding, `.kicker`, `.h-xl`, `.pipeline-v .step*`, `.body` 等）的 CSS 选择器必须覆盖到 `#xhs-09`，否则第 8 张内容卡会丢失全部样式。已修复模板为覆盖 `#xhs-02` ~ `#xhs-09`。
 
 输出到：`D:\workbuddy\briefings\YYYY-MM-DD-m17\index.html`
 
@@ -90,7 +92,7 @@ trigger_words:
   "D:/workbuddy/briefings/YYYY-MM-DD-m17"
 ```
 
-输出 8 张 PNG：`xhs-01.png` ~ `xhs-08.png`。
+输出 9 张 PNG：`xhs-01.png` ~ `xhs-09.png`（1 封面 + 8 内容卡）。
 
 ### 6. 写入元数据
 
