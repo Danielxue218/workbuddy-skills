@@ -14,5 +14,8 @@
     "Remove the robotic tone from this paragraph",
     "Make this content sound more conversational"
   ],
-  "iconSource": "letter:auto"
+  "iconSource": "letter:auto",
+  "skillName": "humanizer",
+  "description_zh": "去除文本中的 AI 写作痕迹",
+  "description_en": "Remove AI writing patterns from text"
 }

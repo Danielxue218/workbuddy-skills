@@ -1,0 +1,99 @@
+{
+  "version": "1.0.0",
+  "description": "legal-suits 专家团技能登记簿 — 新技能安装后更新此文件，将技能与对应Agent正式链接",
+  "lastUpdated": "2026-07-16",
+  "updateRule": "新技能安装到WorkBuddy后，在skills数组中新增一条记录，指定designatedAgents；若技能适用多个角色，按角色优先级排序",
+  "skills": [
+    {
+      "id": "case-initializer",
+      "type": "案件初始化类",
+      "source": "user-skill",
+      "description": "7步案件沙箱扫描与初始化",
+      "designatedAgents": ["junior-associate-mike"],
+      "invocationStyle": "自然语言指令",
+      "phaseUsage": ["Phase 1"]
+    },
+    {
+      "id": "writing-style-profile",
+      "type": "写作风格类",
+      "source": "user-skill",
+      "description": "薛龙律师写作风格配置，10章风格规范",
+      "designatedAgents": ["senior-associate-harvey", "secretary-donna"],
+      "invocationStyle": "自然语言指令",
+      "phaseUsage": ["Phase 4（Harvey内容风格）", "Phase 5（Donna格式规范）"],
+      "roleNote": "Harvey调用确保内容风格匹配；Donna调用确保格式数值匹配"
+    },
+    {
+      "id": "litigation-intake-assessment",
+      "type": "案件评估类",
+      "source": "user-skill",
+      "description": "案件初步评估报告生成（胜诉率/周期/成本）",
+      "designatedAgents": ["senior-associate-harvey"],
+      "invocationStyle": "自然语言指令",
+      "phaseUsage": ["Phase 2", "Phase 4"]
+    },
+    {
+      "id": "pkulaw",
+      "type": "法律检索类",
+      "source": "mcp-connector",
+      "description": "北大法宝法条/案例智能检索",
+      "designatedAgents": ["senior-associate-harvey", "junior-associate-mike"],
+      "invocationStyle": "MCP工具调用",
+      "phaseUsage": ["Phase 2/3（Harvey深度检索）", "Phase 3（Mike简单确认）"],
+      "roleNote": "Harvey：search_article + search_case深度检索；Mike：get_article简单确认法条是否存在"
+    },
+    {
+      "id": "yuandian-mcp",
+      "type": "法律检索类",
+      "source": "mcp-connector",
+      "description": "华宇元典法律数据（案例语义检索/法条检索/幻觉检测）",
+      "designatedAgents": ["senior-associate-harvey"],
+      "invocationStyle": "MCP工具调用",
+      "phaseUsage": ["Phase 3"]
+    },
+    {
+      "id": "qcc-company",
+      "type": "企业信息核实类",
+      "source": "mcp-connector",
+      "description": "企查查企业工商信息查询",
+      "designatedAgents": ["junior-associate-mike"],
+      "invocationStyle": "MCP工具调用",
+      "phaseUsage": ["Phase 3"]
+    },
+    {
+      "id": "tmeet-skill",
+      "type": "会议纪要类",
+      "source": "mcp-connector",
+      "description": "腾讯会议录制/智能纪要/转写",
+      "designatedAgents": ["junior-associate-mike", "secretary-donna"],
+      "invocationStyle": "自然语言指令",
+      "phaseUsage": ["Phase 1（Mike提取会议事实）", "Phase 5（Donna归档辅助）"]
+    },
+    {
+      "id": "lexiang-knowledge-base",
+      "type": "知识库归档类",
+      "source": "mcp-connector",
+      "description": "乐享知识库文档创建/搜索/归档",
+      "designatedAgents": ["secretary-donna"],
+      "invocationStyle": "自然语言指令",
+      "phaseUsage": ["Phase 5"]
+    }
+  ],
+  "reservedSlots": {
+    "non-litigation-partner": {
+      "skillTypes": ["非诉专项类"],
+      "examples": ["合规审查技能", "尽职调查技能", "股权架构设计技能"],
+      "note": "激活Louis后，将新技能添加到skills数组并指定designatedAgents"
+    },
+    "external-advisor": {
+      "skillTypes": ["跨域专家判断类"],
+      "examples": ["税务筹划技能", "跨境资产规划技能", "金融监管合规技能"],
+      "note": "激活Jessica后，将新技能添加到skills数组并指定designatedAgents"
+    },
+    "industry-specialist": {
+      "skillTypes": ["行业分析类"],
+      "examples": ["行业数据穿透技能", "市场调研技能", "价格体系验证技能"],
+      "note": "激活Katrina后，将新技能添加到skills数组并指定designatedAgents"
+    }
+  }
+}
