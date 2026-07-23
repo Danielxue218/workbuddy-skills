@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1520" width="1240" height="1520" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <!-- 灰色主流程箭头 -->
+    <marker id="arrGray" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#9CA3AF"/>
+    </marker>
+    <!-- 稍深灰：回路/异常用 -->
+    <marker id="arrGrayDark" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#707070"/>
+    </marker>
+    <!-- 朱砂红异常箭头 -->
+    <marker id="arrRed" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#C92C2C"/>
+    </marker>
+  </defs>
+
+  <rect width="1240" height="1520" fill="#FFFFFF"/>
+
+  <!-- ============ 顶部标题区 ============ -->
+  <text x="620" y="62" text-anchor="middle" font-size="28" font-weight="700" fill="#1A1A1A" letter-spacing="1px">技术服务合同  ·  履约业务流程图</text>
+  <text x="620" y="96" text-anchor="middle" font-size="13.5" fill="#606060" letter-spacing="0.5px">合同签署  →  预付款  →  交付  →  验收  →  进度款  →  质保期  →  尾款  →  履约完毕</text>
+
+  <!-- ============ 图例区（色块化图例，无边框；字用灰色） ============ -->
+  <g transform="translate(80, 128)">
+    <text x="0" y="0" font-size="10.5" letter-spacing="4px" fill="#A0A0A0">图例</text>
+
+    <!-- 甲方节点：蓝色整色块 -->
+    <rect x="0" y="14" width="14" height="14" rx="3" fill="#0070C0"/>
+    <text x="22" y="25" font-size="11" fill="#4A4A4A">甲方节点</text>
+
+    <!-- 乙方节点：绿色整色块 -->
+    <rect x="92" y="14" width="14" height="14" rx="3" fill="#006A4E"/>
+    <text x="114" y="25" font-size="11" fill="#4A4A4A">乙方节点</text>
+
+    <!-- 双方节点：黄色整色块 -->
+    <rect x="184" y="14" width="14" height="14" rx="3" fill="#F6C12C"/>
+    <text x="206" y="25" font-size="11" fill="#4A4A4A">双方节点</text>
+
+    <!-- 判断节点：米白块 -->
+    <rect x="266" y="14" width="14" height="14" rx="3" fill="#F5F0E1"/>
+    <text x="288" y="25" font-size="11" fill="#4A4A4A">判断节点</text>
+
+    <!-- 异常节点：朱砂红整色块 -->
+    <rect x="348" y="14" width="14" height="14" rx="3" fill="#C92C2C"/>
+    <text x="370" y="25" font-size="11" fill="#4A4A4A">异常节点</text>
+
+    <!-- 终端节点：深蓝整色块 -->
+    <rect x="430" y="14" width="22" height="14" rx="7" fill="#003153"/>
+    <text x="460" y="25" font-size="11" fill="#4A4A4A">终端节点</text>
+
+    <!-- 主流程：灰色实线 -->
+    <line x1="556" y1="21" x2="584" y2="21" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+    <text x="594" y="25" font-size="11" fill="#4A4A4A">主流程</text>
+
+    <!-- 循环回路：稍深灰实线（不再虚线） -->
+    <line x1="666" y1="21" x2="696" y2="21" stroke="#707070" stroke-width="1.8" marker-end="url(#arrGrayDark)"/>
+    <text x="706" y="25" font-size="11" fill="#4A4A4A">循环回路</text>
+
+    <!-- 异常升级：朱砂红实线 -->
+    <line x1="796" y1="21" x2="824" y2="21" stroke="#C92C2C" stroke-width="1.8" marker-end="url(#arrRed)"/>
+    <text x="834" y="25" font-size="11" fill="#4A4A4A">异常升级</text>
+  </g>
+
+  <!-- ============ Step 0: 合同签署生效（终端节点 · 深蓝） ============ -->
+  <rect x="470" y="180" width="300" height="68" rx="34" ry="34" fill="#003153"/>
+  <text x="620" y="212" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">合同签署生效</text>
+  <text x="620" y="232" text-anchor="middle" font-size="11" fill="#C8D4E0">双方盖章之日  ·  合同总金额 86 万元</text>
+
+  <line x1="620" y1="258" x2="620" y2="298" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ Step 1: 甲方支付预付款（甲方 · 蓝色 #0070C0） ============ -->
+  <rect x="400" y="308" width="440" height="92" rx="14" ry="14" fill="#0070C0"/>
+  <text x="620" y="341" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">甲方支付预付款</text>
+  <text x="620" y="365" text-anchor="middle" font-size="12" fill="#D9EBF7">30%  ·  人民币 25.8 万元</text>
+  <text x="620" y="385" text-anchor="middle" font-size="11" fill="#D9EBF7">合同签署之日起 5 个工作日内</text>
+
+  <line x1="620" y1="410" x2="620" y2="448" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ Step 2: 乙方开始履约（乙方 · 绿色 #006A4E） ============ -->
+  <rect x="400" y="458" width="440" height="92" rx="14" ry="14" fill="#006A4E"/>
+  <text x="620" y="491" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">乙方开始履约</text>
+  <text x="620" y="515" text-anchor="middle" font-size="12" fill="#D4E8DE">开发客户关系管理（CRM）系统</text>
+  <text x="620" y="535" text-anchor="middle" font-size="11" fill="#D4E8DE">交付周期 12 个月  ·  中期第 6 月末里程碑</text>
+
+  <line x1="620" y1="560" x2="620" y2="598" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ Step 3: 乙方提交交付物（乙方 · 绿色） ============ -->
+  <rect x="400" y="608" width="440" height="92" rx="14" ry="14" fill="#006A4E"/>
+  <text x="620" y="641" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">乙方提交交付物</text>
+  <text x="620" y="665" text-anchor="middle" font-size="12" fill="#D4E8DE">系统源码 + 部署文档 + 培训材料</text>
+  <text x="620" y="685" text-anchor="middle" font-size="11" fill="#D4E8DE">第 12 月末  ·  提交至甲方指定邮箱</text>
+
+  <line x1="620" y1="710" x2="620" y2="748" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ Step 4: 甲方验收（圆角菱形 · 米白 + 深灰字） ============ -->
+  <!-- 圆角菱形用 path：菱形四个顶点(0,-70) (180,0) (0,70) (-180,0)，用二次贝塞尔在每个尖角做圆角
+       实现：从左尖角附近起步，走直线到顶尖角附近，用 Q 做圆角，再走直线到右尖角附近，Q 圆角... -->
+  <g transform="translate(620, 820)">
+    <path d="M -172 -4
+             L -8 -66
+             Q 0 -70, 8 -66
+             L 172 -4
+             Q 180 0, 172 4
+             L 8 66
+             Q 0 70, -8 66
+             L -172 4
+             Q -180 0, -172 -4 Z"
+          fill="#F5F0E1"/>
+    <text x="0" y="-10" text-anchor="middle" font-size="15" font-weight="700" fill="#2A2A2A">甲方验收</text>
+    <text x="0" y="12" text-anchor="middle" font-size="11" fill="#5A5A5A">15 个工作日内完成</text>
+    <text x="0" y="32" text-anchor="middle" font-size="10.5" fill="#808080">按附件一技术规范书</text>
+  </g>
+
+  <!-- ============ 分支：合格（向下 · 灰色主流程） ============ -->
+  <line x1="620" y1="890" x2="620" y2="938" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+  <!-- 合格标签·绿底白字胶囊 -->
+  <rect x="593" y="898" width="54" height="22" rx="11" ry="11" fill="#006A4E"/>
+  <text x="620" y="913" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">合格</text>
+
+  <!-- ============ 分支：不合格（向右） ============ -->
+  <!-- 菱形右尖角 x=800 y=820，水平直线到整改卡左侧 x=890 -->
+  <line x1="800" y1="820" x2="886" y2="820" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+  <!-- 不合格标签·红底白字胶囊 -->
+  <rect x="813" y="809" width="54" height="22" rx="11" ry="11" fill="#C92C2C"/>
+  <text x="840" y="824" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">不合格</text>
+
+  <!-- ============ Step 5a: 乙方整改（乙方 · 绿色 · 异常侧路） ============ -->
+  <rect x="890" y="774" width="240" height="92" rx="14" ry="14" fill="#006A4E"/>
+  <text x="1010" y="807" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">乙方整改</text>
+  <text x="1010" y="831" text-anchor="middle" font-size="12" fill="#D4E8DE">按验收意见修改</text>
+  <text x="1010" y="851" text-anchor="middle" font-size="11" fill="#D4E8DE">15 个工作日内</text>
+
+  <!-- ============ 循环回路：整改完成 → 重新验收
+       从整改卡底部中点 (1010, 866) 出发
+       向下走 20px 到 (1010, 886)
+       向左走到 (620, 886)（回到主列的正下方）—— 这会和合格箭头打架，不行
+       
+       改方案：从整改卡左侧中点(890, 820)出发 → 向上直线到(890, 750)
+               → 向左直线到(500, 750) → 向下到菱形顶尖(500→620, 750)
+       
+       但菱形顶点在(620, 750) 会遮挡，需要连接到菱形左上斜边
+       菱形左上斜边：(440, 820)到(620, 750) 的斜线
+       我们取菱形顶点 (620, 750) 为目标
+       
+       路径: 整改卡顶部左侧(920, 774) → 向上到(920, 746) → 向左到(620, 746) → 向下进入菱形顶点(620, 750)
+       ============ -->
+  <!-- 循环回路：从整改卡顶部(1010, 774) 向上到 (1010, 720)，
+       向左到 (740, 720) 停在 X=740 避开主流程线，
+       向下到 (740, 786) 落在菱形右上斜边内侧一点点，留出空间给箭头 marker。 -->
+  <path d="M 1010 774
+           L 1010 720
+           L 740 720
+           L 740 786"
+        stroke="#707070" stroke-width="1.8" fill="none"
+        stroke-linejoin="round"
+        marker-end="url(#arrGrayDark)"/>
+  <!-- 循环标签（放在水平回路线下方,让下方空间利用起来,避免压线） -->
+  <rect x="790" y="728" width="170" height="26" rx="13" ry="13" fill="#F6C12C"/>
+  <text x="875" y="745" text-anchor="middle" font-size="11" font-weight="600" fill="#2A2A2A">整改完成  ·  重新验收</text>
+
+  <!-- ============ 异常升级：累计 3 次不合格 → 合同解除（朱砂红直线） ============ -->
+  <line x1="1010" y1="866" x2="1010" y2="908"
+        stroke="#C92C2C" stroke-width="1.8"
+        marker-end="url(#arrRed)"/>
+  <!-- 异常升级标签（红底白字胶囊） -->
+  <rect x="952" y="874" width="116" height="24" rx="12" ry="12" fill="#C92C2C"/>
+  <text x="1010" y="890" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">累计 3 次不合格</text>
+
+  <!-- ============ Step 5b: 合同解除（异常节点 · 朱砂红） ============ -->
+  <rect x="890" y="918" width="240" height="92" rx="14" ry="14" fill="#C92C2C"/>
+  <text x="1010" y="951" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">合同解除</text>
+  <text x="1010" y="975" text-anchor="middle" font-size="12" fill="#F3D4D4">整改累计 3 次不合格</text>
+  <text x="1010" y="995" text-anchor="middle" font-size="11" fill="#F3D4D4">触发第 14.2 条单方解除权</text>
+
+  <!-- ============ Step 6: 甲方支付进度款（甲方 · 蓝色）
+       原来 Y=948 和合同解除 Y=918-1010 重叠，下移到 Y=1060 =========== -->
+  <rect x="400" y="980" width="440" height="92" rx="14" ry="14" fill="#0070C0"/>
+  <text x="620" y="1013" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">甲方支付进度款</text>
+  <text x="620" y="1037" text-anchor="middle" font-size="12" fill="#D9EBF7">60%  ·  人民币 51.6 万元</text>
+  <text x="620" y="1057" text-anchor="middle" font-size="11" fill="#D9EBF7">验收合格之日起 10 个工作日内</text>
+
+  <line x1="620" y1="1082" x2="620" y2="1120" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ Step 7: 质保期开始（双方 · 黄色 #F6C12C） ============ -->
+  <rect x="400" y="1130" width="440" height="92" rx="14" ry="14" fill="#F6C12C"/>
+  <text x="620" y="1163" text-anchor="middle" font-size="16" font-weight="700" fill="#2A2A2A">质保期开始</text>
+  <text x="620" y="1187" text-anchor="middle" font-size="12" fill="#3A3A3A">12 个月  ·  乙方免费修复缺陷</text>
+  <text x="620" y="1207" text-anchor="middle" font-size="11" fill="#4A4A4A">响应 72 小时  ·  修复 5 工作日</text>
+
+  <line x1="620" y1="1232" x2="620" y2="1270" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ Step 8: 甲方支付尾款（甲方 · 蓝色） ============ -->
+  <rect x="400" y="1280" width="440" height="92" rx="14" ry="14" fill="#0070C0"/>
+  <text x="620" y="1313" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">甲方支付尾款</text>
+  <text x="620" y="1337" text-anchor="middle" font-size="12" fill="#D9EBF7">10%  ·  人民币 8.6 万元</text>
+  <text x="620" y="1357" text-anchor="middle" font-size="11" fill="#D9EBF7">质保期满后 15 个工作日内</text>
+
+  <line x1="620" y1="1382" x2="620" y2="1420" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ 终点：合同履行完毕（终端节点 · 深蓝 #003153） ============ -->
+  <rect x="470" y="1430" width="300" height="58" rx="29" ry="29" fill="#003153"/>
+  <text x="620" y="1464" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">合同履行完毕</text>
+</svg>

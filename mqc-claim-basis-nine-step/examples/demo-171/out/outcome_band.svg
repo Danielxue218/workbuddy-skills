@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="510" viewBox="0 0 1240 510"><style>text{font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif;}</style><rect width="1240" height="510" fill="#FFFFFF"/>
+<text data-role="title" x="620.0" y="46" font-size="30" font-weight="700" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif" fill="#1A1A1A" text-anchor="middle">结果预判 · 区间带 · 恒和工程款纠纷（中天 · 原告向 · 前瞻）</text>
+<text x="620.0" y="78" font-size="14" fill="#606060" text-anchor="middle">原告向  ·  前瞻  ·  结果区间预判</text>
+<g data-role="confidence">
+<rect x="60" y="108" width="13" height="13" rx="2" fill="#FF9900"/>
+<text x="80" y="119" font-size="12" fill="#606060">置信度：中</text>
+</g>
+<g data-role="segments">
+<g data-role="segment" data-name="判决支持">
+<rect x="60.0" y="150" width="269.5" height="104" rx="12" ry="12" fill="#F5F0E1"/>
+<text x="194.8" y="207.6" font-size="16" font-weight="700" fill="#1A1A1A" text-anchor="middle">判决支持</text>
+</g>
+<g data-role="segment" data-name="部分支持" data-most="1">
+<rect x="343.5" y="150" width="269.5" height="104" rx="12" ry="12" fill="#F5F0E1"/>
+<rect x="340.5" y="147" width="275.5" height="110" rx="14" ry="14" fill="none" stroke="#003153" stroke-width="2.5"/>
+<text x="478.2" y="138" font-size="12" font-weight="700" fill="#003153" text-anchor="middle">最可能区间</text>
+<text x="478.2" y="207.6" font-size="16" font-weight="700" fill="#1A1A1A" text-anchor="middle">部分支持</text>
+</g>
+<g data-role="segment" data-name="判决驳回诉请" data-worst="1">
+<rect x="627.0" y="150" width="269.5" height="104" rx="12" ry="12" fill="#991B1B"/>
+<text x="761.8" y="207.6" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">判决驳回诉请</text>
+<text x="761.8" y="276.0" font-size="12" font-weight="700" fill="#991B1B" text-anchor="middle">最坏情形</text>
+</g>
+<g data-role="segment" data-name="裁定驳回起诉">
+<rect x="910.5" y="150" width="269.5" height="104" rx="12" ry="12" fill="#F5F0E1"/>
+<text x="1045.2" y="207.6" font-size="16" font-weight="700" fill="#1A1A1A" text-anchor="middle">裁定驳回起诉</text>
+</g>
+</g>
+<g data-role="notes">
+<text x="60" y="310" font-size="12" font-weight="700" fill="#1A1A1A">关键不确定项</text>
+<text x="60" y="334.0" font-size="12" fill="#606060">· 数额 T4 经《审核报告》结算协议+印章自认，前景转高——本应是第一决定性要件，被修正因素化解</text>
+<text x="60" y="360.0" font-size="12" fill="#606060">· 主要残余胜负手=优先受偿权除斥期间起算点与行使方式（发函 vs 诉讼）</text>
+<text x="60" y="386.0" font-size="12" fill="#606060">· 停工损失举证与因果较弱，很可能落入&#x27;其他诉请驳回&#x27;，故最可能为部分支持</text>
+<text x="60" y="412.0" font-size="12" fill="#606060">· 程序前置抗辩弱（起诉在破产受理前）；裁定驳回起诉概率低</text>
+</g>
+<text data-role="worst-why" x="60" y="456.0" font-size="12" fill="#606060">最坏情形由来：若《审核报告》不被采信→造价鉴定→数额落空，且优先受偿权除斥期间抗辩成立（叠加最坏）</text>
+</svg>

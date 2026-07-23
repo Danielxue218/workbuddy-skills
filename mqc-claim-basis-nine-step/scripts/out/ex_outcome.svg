@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="458" viewBox="0 0 1240 458"><style>text{font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif;}</style><rect width="1240" height="458" fill="#FFFFFF"/>
+<text data-role="title" x="620.0" y="46" font-size="30" font-weight="700" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif" fill="#1A1A1A" text-anchor="middle">结果预判 · 区间带（抽象样例）</text>
+<text x="620.0" y="78" font-size="14" fill="#606060" text-anchor="middle">原告向  ·  前瞻  ·  结果区间预判</text>
+<g data-role="confidence">
+<rect x="60" y="108" width="13" height="13" rx="2" fill="#FF9900"/>
+<text x="80" y="119" font-size="12" fill="#606060">置信度：中</text>
+</g>
+<g data-role="segments">
+<g data-role="segment" data-name="判决支持">
+<rect x="60.0" y="150" width="269.5" height="104" rx="12" ry="12" fill="#F5F0E1"/>
+<text x="194.8" y="207.6" font-size="16" font-weight="700" fill="#1A1A1A" text-anchor="middle">判决支持</text>
+</g>
+<g data-role="segment" data-name="部分支持" data-most="1">
+<rect x="343.5" y="150" width="269.5" height="104" rx="12" ry="12" fill="#F5F0E1"/>
+<rect x="340.5" y="147" width="275.5" height="110" rx="14" ry="14" fill="none" stroke="#003153" stroke-width="2.5"/>
+<text x="478.2" y="138" font-size="12" font-weight="700" fill="#003153" text-anchor="middle">最可能区间</text>
+<text x="478.2" y="207.6" font-size="16" font-weight="700" fill="#1A1A1A" text-anchor="middle">部分支持</text>
+</g>
+<g data-role="segment" data-name="判决驳回诉请" data-worst="1">
+<rect x="627.0" y="150" width="269.5" height="104" rx="12" ry="12" fill="#991B1B"/>
+<text x="761.8" y="207.6" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">判决驳回诉请</text>
+<text x="761.8" y="276.0" font-size="12" font-weight="700" fill="#991B1B" text-anchor="middle">最坏情形</text>
+</g>
+<g data-role="segment" data-name="裁定驳回起诉">
+<rect x="910.5" y="150" width="269.5" height="104" rx="12" ry="12" fill="#F5F0E1"/>
+<text x="1045.2" y="207.6" font-size="16" font-weight="700" fill="#1A1A1A" text-anchor="middle">裁定驳回起诉</text>
+</g>
+</g>
+<g data-role="notes">
+<text x="60" y="310" font-size="12" font-weight="700" fill="#1A1A1A">关键不确定项</text>
+<text x="60" y="334.0" font-size="12" fill="#606060">· 赢面取决于要件 X 的证明前景（关键结算类文书能否补齐）</text>
+<text x="60" y="360.0" font-size="12" fill="#606060">· 对手是否提出时效抗辩尚未明朗，属关键不确定项</text>
+</g>
+<text data-role="worst-why" x="60" y="404.0" font-size="12" fill="#606060">最坏情形由来：决定性要件 X 失利 + 对手时效抗辩成立，叠加得出</text>
+</svg>

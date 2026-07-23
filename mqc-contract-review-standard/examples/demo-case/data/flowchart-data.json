@@ -1,0 +1,77 @@
+{
+    "contract_name": "技术服务合同",
+    "title": "技术服务合同  ·  履约业务流程图",
+    "subtitle": "合同签署  →  预付款  →  交付  →  验收  →  进度款  →  质保期  →  尾款  →  履约完毕",
+
+    "main_flow": [
+        {
+            "type": "terminal_start",
+            "title": "合同签署生效",
+            "sub1": "双方盖章之日  ·  合同总金额 86 万元"
+        },
+        {
+            "type": "party_a",
+            "title": "甲方支付预付款",
+            "sub1": "30%  ·  人民币 25.8 万元",
+            "sub2": "合同签署之日起 5 个工作日内"
+        },
+        {
+            "type": "party_b",
+            "title": "乙方开始履约",
+            "sub1": "开发客户关系管理(CRM)系统",
+            "sub2": "交付周期 12 个月  ·  中期第 6 月末里程碑"
+        },
+        {
+            "type": "party_b",
+            "title": "乙方提交交付物",
+            "sub1": "系统源码 + 部署文档 + 培训材料",
+            "sub2": "第 12 月末  ·  提交至甲方指定邮箱"
+        },
+        {
+            "type": "decision",
+            "title": "甲方验收",
+            "sub1": "15 个工作日内完成",
+            "sub2": "按附件一技术规范书"
+        },
+        {
+            "type": "party_a",
+            "title": "甲方支付进度款",
+            "sub1": "60%  ·  人民币 51.6 万元",
+            "sub2": "验收合格之日起 10 个工作日内"
+        },
+        {
+            "type": "both_parties",
+            "title": "质保期开始",
+            "sub1": "12 个月  ·  乙方免费修复缺陷",
+            "sub2": "响应 72 小时  ·  修复 5 工作日"
+        },
+        {
+            "type": "party_a",
+            "title": "甲方支付尾款",
+            "sub1": "10%  ·  人民币 8.6 万元",
+            "sub2": "质保期满后 15 个工作日内"
+        },
+        {
+            "type": "terminal_end",
+            "title": "合同履行完毕"
+        }
+    ],
+
+    "side_nodes": [
+        {
+            "id": "remediation_01",
+            "type": "party_b",
+            "anchor_index": 4,
+            "title": "乙方整改",
+            "sub1": "按验收意见修改",
+            "sub2": "15 个工作日内",
+            "return_label": "整改完成  ·  重新验收",
+            "escalation": {
+                "condition": "累计 3 次不合格",
+                "target_title": "合同解除",
+                "target_sub1": "整改累计 3 次不合格",
+                "target_sub2": "触发第 14.2 条单方解除权"
+            }
+        }
+    ]
+}

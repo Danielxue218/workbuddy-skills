@@ -1,0 +1,122 @@
+{
+  "name": "legal-suits-group",
+  "version": "2.1.0",
+  "description": "观韬(上海)薛龙合伙人团队 Suits法律专家团 - 4+3角色5阶段闭环协作：案件初始化→要件预判→并行深化→IRAC综合建议→终稿格式化与脱敏，含3个预留角色空位",
+  "author": {
+    "name": "Daniel Xue"
+  },
+  "agents": [
+    "./agents/daniel-xue.md",
+    "./agents/senior-associate-harvey.md",
+    "./agents/junior-associate-mike.md",
+    "./agents/secretary-donna.md",
+    "./agents/non-litigation-partner.md",
+    "./agents/external-advisor.md",
+    "./agents/industry-specialist.md"
+  ],
+  "expertType": "team",
+  "agentName": "daniel-xue",
+  "teamInfo": {
+    "leadAgent": "daniel-xue",
+    "memberAgents": [
+      "senior-associate-harvey",
+      "junior-associate-mike",
+      "secretary-donna",
+      "non-litigation-partner",
+      "external-advisor",
+      "industry-specialist"
+    ]
+  },
+  "skillRegistry": "./skill-registry.json",
+  "displayName": {
+    "en": "Legal Suits Group",
+    "zh": "Suits法律专家团"
+  },
+  "profession": {
+    "en": "Guantao Law Firm Shanghai · Xue Long Partner Team",
+    "zh": "观韬(上海)律师事务所·薛龙合伙人团队"
+  },
+  "displayDescription": {
+    "en": "5-phase collaborative legal workflow: case initialization → substantive requirements trial → parallel research → IRAC opinion → final formatting with PII desensitization. 3 reserved slots for non-litigation, external advisor, and industry specialist.",
+    "zh": "5阶段闭环协作：案件初始化→要件预判→并行深化→IRAC综合建议→终稿格式化与脱敏。含非诉合伙人/外部顾问/行业专家3个预留空位"
+  },
+  "avatar": "avatars/team.png",
+  "categoryId": "11-SecurityCompliance",
+  "defaultInitPrompt": {
+    "zh": "请帮我初始化一个新案件并出具法律分析意见",
+    "en": "Please help me initialize a new case and produce a legal analysis opinion"
+  },
+  "tags": [
+    { "en": "Legal Analysis", "zh": "法律分析" },
+    { "en": "Case Management", "zh": "案件管理" },
+    { "en": "IRAC Method", "zh": "IRAC五段式" },
+    { "en": "Litigation", "zh": "诉讼争议解决" },
+    { "en": "Desensitization", "zh": "脱敏合规" }
+  ],
+  "quickPrompts": [
+    { "zh": "请帮我初始化一个新案件并出具法律分析意见", "en": "Please help me initialize a new case and produce a legal analysis opinion" },
+    { "zh": "分析本案争议焦点并预判对方可能主张", "en": "Analyze the case disputes and predict opposing arguments" },
+    { "zh": "用IRAC五段式出具法律意见书", "en": "Draft a legal opinion using the IRAC five-section method" }
+  ],
+  "members": [
+    {
+      "id": "daniel-xue",
+      "name": { "en": "Daniel Xue", "zh": "薛龙" },
+      "profession": { "en": "Partner / Team Lead", "zh": "合伙人 / 主理人" },
+      "avatar": "avatars/daniel-xue.png",
+      "role": "lead",
+      "status": "active"
+    },
+    {
+      "id": "senior-associate-harvey",
+      "name": { "en": "Harvey", "zh": "哈维" },
+      "profession": { "en": "Senior Associate", "zh": "高级律师" },
+      "avatar": "avatars/senior-associate-harvey.png",
+      "role": "member",
+      "status": "active"
+    },
+    {
+      "id": "junior-associate-mike",
+      "name": { "en": "Mike", "zh": "迈克" },
+      "profession": { "en": "Junior Associate", "zh": "初级助理" },
+      "avatar": "avatars/junior-associate-mike.png",
+      "role": "member",
+      "status": "active"
+    },
+    {
+      "id": "secretary-donna",
+      "name": { "en": "Donna", "zh": "唐娜" },
+      "profession": { "en": "Secretary / EA", "zh": "行政秘书" },
+      "avatar": "avatars/secretary-donna.png",
+      "role": "member",
+      "status": "active"
+    },
+    {
+      "id": "non-litigation-partner",
+      "name": { "en": "Louis", "zh": "路易斯" },
+      "profession": { "en": "Non-litigation Partner", "zh": "非诉合伙人" },
+      "avatar": "avatars/non-litigation-partner.png",
+      "role": "member",
+      "status": "reserved",
+      "activationCondition": "非诉业务量增长到需专职处理时"
+    },
+    {
+      "id": "external-advisor",
+      "name": { "en": "Jessica", "zh": "杰西卡" },
+      "profession": { "en": "External Advisor", "zh": "外部顾问" },
+      "avatar": "avatars/external-advisor.png",
+      "role": "member",
+      "status": "reserved",
+      "activationCondition": "案件涉及需外部专业判断的领域时（税务/审计/跨境/金融监管）"
+    },
+    {
+      "id": "industry-specialist",
+      "name": { "en": "Katrina", "zh": "卡特里娜" },
+      "profession": { "en": "Industry Specialist", "zh": "行业专家" },
+      "avatar": "avatars/industry-specialist.png",
+      "role": "member",
+      "status": "reserved",
+      "activationCondition": "特定行业事实需要穿透时（房地产/金融/医疗/异宠贸易等）"
+    }
+  ]
+}

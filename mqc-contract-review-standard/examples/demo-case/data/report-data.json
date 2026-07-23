@@ -1,0 +1,223 @@
+{
+    "contract_name": "技术服务合同",
+    "review_number": "MQC-REV-20260417-001",
+    "client": "北京 XX 科技有限公司",
+    "law_firm": "北京市东友律师事务所",
+    "lawyer": "缪奇川",
+    "party_a": "北京 XX 科技有限公司",
+    "party_b": "上海 YY 信息技术有限公司",
+    "review_stance": "甲方立场",
+    "review_date": "2026 年 4 月 17 日",
+    "amount": "人民币 860,000.00 元",
+    "term": "自合同生效之日起 12 个月",
+    "scope": "合同正文 15 页 + 附件 3 项(共 23 页)",
+    "checklist_version": "1.0.0",
+    "checklist_last_updated": "2026-04-17",
+    "overall_rating": "■ 中风险",
+    "signability": "■ 修改后签约",
+    "summary": "本合同为技术服务外包交易。审查发现 ■ 高风险 2 处、■ 中风险 2 处、■ 低风险 1 处,综合评级 ■ 中风险,建议修改后签约。核心问题集中在:(1) 乙方承担无限连带责任;(2) 大小写金额不一致;(3) 违约金比例超标。其中问题 (1) 必须优先协商;(2) 为 L1 可直接修改;(3) 建议协商调整至行业合理区间。",
+    "top_3": [
+        {
+            "seq": 1,
+            "issue": "乙方承担无限连带责任",
+            "risk_level": "■ 高风险",
+            "checklist_id": "C025",
+            "action": "立即与对方协商,无法修改则不签"
+        },
+        {
+            "seq": 2,
+            "issue": "大小写金额不一致",
+            "risk_level": "■ 高风险",
+            "checklist_id": "C010",
+            "action": "必须修正,保持一致"
+        },
+        {
+            "seq": 3,
+            "issue": "违约金比例超标",
+            "risk_level": "■ 中风险",
+            "checklist_id": "C021",
+            "action": "建议调整至 10%-20% 合理区间"
+        }
+    ],
+    "findings": [
+        {
+            "risk_level": "■ 高风险",
+            "confirmation_level": "L3",
+            "title": "乙方承担无限连带责任且无限制",
+            "clause_location": "第 12.2 条",
+            "checklist_id": "C025",
+            "rule_source": "checklist",
+            "is_precise_review": true,
+            "trigger_standard": "存在无限连带责任且无合理限制 = ■ 高风险",
+            "position_difference": "乙方立场:必须限制或排除连带责任;甲方立场:作为债权方可能乐于保留",
+            "original_text": "乙方应就本合同项下任何违约行为向甲方承担无限连带责任，该责任不受本合同其他条款关于责任上限的约定限制。",
+            "risk_description": "无限连带责任条款会使乙方承担远超交易规模的赔偿风险,理论上可能引发乙方破产。根据民法典第 687 条,连带保证需明确保证范围和期限,无上限无期限的约定在实务中常被法院部分否认。",
+            "suggestion_original": "乙方应就本合同项下任何违约行为向甲方承担无限连带责任，该责任不受本合同其他条款关于责任上限的约定限制。",
+            "suggestion_revised": "乙方应就本合同项下**因其过错违反本合同导致甲方损失的行为**承担赔偿责任。**除故意或重大过失外，乙方的赔偿责任总额以本合同总金额为上限**。",
+            "related_laws": "《中华人民共和国民法典》第 687 条、第 692 条",
+            "negotiation_tier": "Tier 1",
+            "issue_summary": "乙方承担无限连带责任"
+        },
+        {
+            "risk_level": "■ 高风险",
+            "confirmation_level": "L1",
+            "title": "大小写金额不一致",
+            "clause_location": "第 3.1 条",
+            "checklist_id": "C010",
+            "rule_source": "checklist",
+            "is_precise_review": false,
+            "trigger_standard": "大小写金额不一致 = ■ 高风险(民法典第 498 条)",
+            "position_difference": "中性",
+            "original_text": "本合同总金额为人民币 860,000 元（大写:柒拾陆万元整），含 13% 增值税。",
+            "risk_description": "小写 860,000 与大写「柒拾陆万」(760,000)不一致,依据民法典第 498 条对格式条款的解释规则,争议发生时可能产生实质性分歧。",
+            "suggestion_original": "人民币 860,000 元（大写:柒拾陆万元整）",
+            "suggestion_revised": "人民币 860,000.00 元（大写:**捌拾陆万元整**）",
+            "related_laws": "《中华人民共和国民法典》第 498 条",
+            "negotiation_tier": "Tier 1",
+            "issue_summary": "大小写金额不一致"
+        },
+        {
+            "risk_level": "■ 中风险",
+            "confirmation_level": "L3",
+            "title": "违约金比例超过合同金额 30%",
+            "clause_location": "第 8.1 条",
+            "checklist_id": "C021",
+            "rule_source": "checklist",
+            "is_precise_review": true,
+            "trigger_standard": "违约金超过合同总金额 30% = ■ 高风险;在 20%-30% 区间 = ■ 中风险",
+            "position_difference": "甲方立场:乙方违约金过低为风险;乙方立场:我方违约金过高为风险",
+            "original_text": "任何一方违反本合同约定的，违约方应当向守约方支付本合同总金额 35% 的违约金。",
+            "risk_description": "违约金 35% 接近民法典第 585 条规定的\"过分高于造成的损失\"标准，在争议发生时法院可能依当事人请求进行酌减。实务中违约金超过 30% 的约定常被部分否认。注:本合同第 8.2 条已约定实际损失超出部分可继续索赔，故修改建议仅调整比例，不重复添加兜底条款。",
+            "suggestion_original": "违约方应当向守约方支付本合同总金额 35% 的违约金",
+            "suggestion_revised": "违约方应当向守约方支付本合同总金额 **15%** 的违约金",
+            "related_laws": "《中华人民共和国民法典》第 585 条",
+            "negotiation_tier": "Tier 2",
+            "issue_summary": "违约金比例超标"
+        },
+        {
+            "risk_level": "■ 中风险",
+            "confirmation_level": "L2",
+            "title": "双方逾期违约金标准差异达 4 倍且日率畸高",
+            "clause_location": "第 8.3 条",
+            "checklist_id": "C022",
+            "rule_source": "playbook",
+            "is_precise_review": false,
+            "trigger_standard": "双方违约金比例差异超过 2 倍 = ■ 中风险",
+            "position_difference": "甲方立场:作为更有利一方,对方违约金过低为风险;乙方立场:显著不对等",
+            "original_text": "甲方逾期支付款项的，每逾期一日，按未付款项的 5% 向乙方支付违约金;乙方逾期交付的，每逾期一日，按合同总金额的 20% 向甲方支付违约金。",
+            "risk_description": "双方逾期违约金标准差异达 4 倍（日 5% vs 日 20%），且两档日率均远超行业惯例（日万分之三至万分之五），实际争议中几乎必然被法院酌减。若争议发生，法院可能对不对等条款作偏向守约方的解释。",
+            "suggestion_original": "甲方逾期支付款项的，每逾期一日，按未付款项的 5% 向乙方支付违约金;乙方逾期交付的，每逾期一日，按合同总金额的 20% 向甲方支付违约金。",
+            "suggestion_revised": "**任何一方逾期履行本合同项下付款或交付义务的，每逾期一日，按相应未履行部分金额的万分之五向守约方支付违约金**。",
+            "related_laws": "《中华人民共和国民法典》第 585 条",
+            "negotiation_tier": "Tier 2",
+            "issue_summary": "双方逾期违约金不对等且日率畸高"
+        },
+        {
+            "risk_level": "■ 低风险",
+            "confirmation_level": "L2",
+            "title": "送达地址未明确确认",
+            "clause_location": "第 15.1 条",
+            "checklist_id": "C050",
+            "rule_source": "checklist",
+            "is_precise_review": false,
+            "trigger_standard": "未约定送达地址 = ■ 低风险(提示关注)",
+            "position_difference": "中性",
+            "original_text": "本合同有关通知应当以书面形式送达对方。",
+            "risk_description": "未约定法定送达地址,诉讼阶段可能导致送达困难。",
+            "suggestion_original": "本合同有关通知应当以书面形式送达对方。",
+            "suggestion_revised": "本合同有关通知应当以书面形式送达对方。**双方确认本合同首部所列联系地址为法律文书送达地址；一方地址变更的，应当书面通知对方，未书面通知的，按原地址送达即视为有效送达。**",
+            "related_laws": "《中华人民共和国民事诉讼法》第 90 条",
+            "negotiation_tier": "Tier 3",
+            "issue_summary": "送达地址未明确"
+        }
+    ],
+    "missing_clauses": [
+        {
+            "clause": "不可抗力条款",
+            "checklist_id": "C046",
+            "importance": "■ 建议补充",
+            "suggestion_brief": "补充标准不可抗力条款",
+            "bridge_clause": "因不可抗力事件导致本合同全部或部分无法履行的，**受影响方应在事件发生后 15 日内书面通知对方**，并在 **30 日内提供相关机构出具的证明**。**不可抗力持续超过 60 日的，任何一方均可书面通知解除本合同**。",
+            "reason": "不可抗力条款是标准合同条款,合同中缺失该条款将在发生疫情、自然灾害、政策管制等事件时无法明确责任归属。建议补充具体的通知期限、证明要求和解除机制。"
+        }
+    ],
+    "extra_findings": [
+        {
+            "title": "竞业限制补偿金标准缺失",
+            "clause_location": "第 12 条",
+            "original_text": "乙方核心人员（包括但不限于项目经理、技术总监、核心开发人员）在本合同期间及本合同期满后 2 年内，不得从事与本项目相关的竞争性业务",
+            "analysis": "合同约定了竞业限制义务,但未约定对应的补偿金标准。根据劳动合同法类推适用原理,无补偿的竞业限制实务中可能被认定不具约束力。",
+            "suggestion": "补充竞业限制补偿金标准(通常为上年度月均工资的 30%-50%)",
+            "suggest_add_to": "四、权利与义务"
+        }
+    ],
+    "laws_index": [
+        {
+            "id": 1,
+            "law_full_name": "《中华人民共和国民法典》",
+            "version_year": "2020 年制定,2021 年 1 月 1 日施行",
+            "article": "第 498 条",
+            "original_text": "对格式条款有两种以上解释的,应当作出不利于提供格式条款一方的解释。",
+            "cited_in": "风险 2",
+            "verify_date": "2026 年 4 月 17 日",
+            "pending_verify": false
+        },
+        {
+            "id": 2,
+            "law_full_name": "《中华人民共和国民法典》",
+            "version_year": "2020 年制定,2021 年 1 月 1 日施行",
+            "article": "第 585 条第 2 款",
+            "original_text": "约定的违约金过分高于造成的损失的,人民法院或者仲裁机构可以根据当事人的请求予以适当减少。",
+            "cited_in": "风险 3、风险 4",
+            "verify_date": "2026 年 4 月 17 日",
+            "pending_verify": false
+        },
+        {
+            "id": 3,
+            "law_full_name": "《中华人民共和国民法典》",
+            "version_year": "2020 年制定,2021 年 1 月 1 日施行",
+            "article": "第 687 条",
+            "original_text": "当事人在保证合同中约定保证人在债务人不能履行债务时承担保证责任的,为一般保证。",
+            "cited_in": "风险 1",
+            "verify_date": "2026 年 4 月 17 日",
+            "pending_verify": false
+        },
+        {
+            "id": 4,
+            "law_full_name": "《中华人民共和国民事诉讼法》",
+            "version_year": "2021 年修正",
+            "article": "第 90 条",
+            "original_text": "送达诉讼文书,应当直接送交受送达人。",
+            "cited_in": "风险 5",
+            "verify_date": "2026 年 4 月 17 日",
+            "pending_verify": true
+        }
+    ],
+    "glossary": [
+        {
+            "term": "Cap",
+            "definition": "责任上限(Liability Cap),指合同违约损失赔偿的总额上限"
+        },
+        {
+            "term": "DPA",
+            "definition": "数据处理协议(Data Processing Agreement),通常作为涉个人信息合同的附件"
+        },
+        {
+            "term": "LPR",
+            "definition": "贷款市场报价利率(Loan Prime Rate),中国人民银行发布"
+        },
+        {
+            "term": "IP",
+            "definition": "知识产权(Intellectual Property)"
+        },
+        {
+            "term": "SLA",
+            "definition": "服务水平协议(Service Level Agreement)"
+        },
+        {
+            "term": "NDA",
+            "definition": "保密协议(Non-Disclosure Agreement)"
+        }
+    ],
+    "brand_line": "LEGAL AI TOOLMAKER  ·  法律工具制造者  |  缪奇川律师 出品"
+}

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="644" viewBox="0 0 1240 644"><style>text{font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif;}</style><rect width="1240" height="644" fill="#FFFFFF"/>
+<defs><marker id="arrGray" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 1.5 L 12 6 L 0 10.5 Z" fill="#9CA3AF"/></marker></defs>
+<text data-role="title" x="620.0" y="46" font-size="30" font-weight="700" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif" fill="#1A1A1A" text-anchor="middle">争议焦点汇聚 · 恒和工程款纠纷（中天 · 原告向）</text>
+<text x="620.0" y="80" font-size="14" fill="#606060" text-anchor="middle">原告向  ·  争议焦点汇聚（争点整理）· 每个焦点由三条来源交汇而成</text>
+<g data-role="focus-unit" data-id="F1" data-core="1">
+<path d="M 452.0,128.0 L 619.0,128.0 Q 622.0,128.0 622.0,131.0 L 622.0,177.0 Q 622.0,180.0 625.0,180.0 L 780.0,180.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<path d="M 452.0,180.0 L 619.0,180.0 Q 622.0,180.0 625.0,180.0 L 780.0,180.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<path d="M 452.0,232.0 L 619.0,232.0 Q 622.0,232.0 622.0,229.0 L 622.0,183.0 Q 622.0,180.0 625.0,180.0 L 780.0,180.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<g data-role="feeder" data-src="决定性要件">
+<rect x="60" y="108.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="132.2" font-size="12" font-weight="700" fill="#003153">〔要件〕</text>
+<text x="122" y="132.2" font-size="12" fill="#1A1A1A">K1 优先受偿权除斥期间</text>
+</g>
+<g data-role="feeder" data-src="对手主攻线">
+<rect x="60" y="160.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="184.2" font-size="12" font-weight="700" fill="#606060">〔对手〕</text>
+<text x="122" y="184.2" font-size="12" fill="#1A1A1A">主张已过除斥期间、须以诉讼方式行使</text>
+</g>
+<g data-role="feeder" data-src="法官视角">
+<rect x="60" y="212.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="236.2" font-size="12" font-weight="700" fill="#006A4E">〔法官〕</text>
+<text x="122" y="236.2" font-size="12" fill="#1A1A1A">起算点+行使方式（171号：执行程序主张视为行使）</text>
+</g>
+<rect x="792" y="137.0" width="388" height="86.0" rx="12" ry="12" fill="#991B1B"/>
+<text x="1166" y="159.0" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="end">实体争点</text>
+<text x="808" y="159.0" font-size="11" font-weight="700" fill="#FFFFFF">核心焦点</text>
+<text x="808.0" y="180.6" font-size="15" font-weight="700" fill="#FFFFFF">优先受偿权是否超6个月除斥期间（起算点+行使方式</text>
+<text x="808.0" y="201.6" font-size="15" font-weight="700" fill="#FFFFFF">）</text>
+</g>
+<g data-role="focus-unit" data-id="F2">
+<path d="M 452.0,302.0 L 619.0,302.0 Q 622.0,302.0 622.0,305.0 L 622.0,351.0 Q 622.0,354.0 625.0,354.0 L 780.0,354.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<path d="M 452.0,354.0 L 619.0,354.0 Q 622.0,354.0 625.0,354.0 L 780.0,354.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<path d="M 452.0,406.0 L 619.0,406.0 Q 622.0,406.0 622.0,403.0 L 622.0,357.0 Q 622.0,354.0 625.0,354.0 L 780.0,354.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<g data-role="feeder" data-src="决定性要件">
+<rect x="60" y="282.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="306.2" font-size="12" font-weight="700" fill="#003153">〔要件〕</text>
+<text x="122" y="306.2" font-size="12" fill="#1A1A1A">T4 工程款数额 / 结算</text>
+</g>
+<g data-role="feeder" data-src="对手主攻线">
+<rect x="60" y="334.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="358.2" font-size="12" font-weight="700" fill="#606060">〔对手〕</text>
+<text x="122" y="358.2" font-size="12" fill="#1A1A1A">否认审核报告 + 申请造价鉴定</text>
+</g>
+<g data-role="feeder" data-src="法官视角">
+<rect x="60" y="386.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="410.2" font-size="12" font-weight="700" fill="#006A4E">〔法官〕</text>
+<text x="122" y="410.2" font-size="12" fill="#1A1A1A">结算协议成立则不准鉴定（解释二12条）</text>
+</g>
+<rect x="792" y="311.0" width="388" height="86.0" rx="12" ry="12" fill="#F5F0E1"/>
+<text x="1166" y="333.0" font-size="11" font-weight="700" fill="#006A4E" text-anchor="end">事实争点</text>
+<text x="808.0" y="354.6" font-size="15" font-weight="700" fill="#1A1A1A">《审核报告》能否作结算依据（→ 数额认定与鉴定申</text>
+<text x="808.0" y="375.6" font-size="15" font-weight="700" fill="#1A1A1A">请）</text>
+</g>
+<g data-role="focus-unit" data-id="F3">
+<path d="M 452.0,476.0 L 619.0,476.0 Q 622.0,476.0 622.0,479.0 L 622.0,499.0 Q 622.0,502.0 625.0,502.0 L 780.0,502.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<path d="M 452.0,528.0 L 619.0,528.0 Q 622.0,528.0 622.0,525.0 L 622.0,505.0 Q 622.0,502.0 625.0,502.0 L 780.0,502.0" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrGray)"/>
+<g data-role="feeder" data-src="对手主攻线">
+<rect x="60" y="456.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="480.2" font-size="12" font-weight="700" fill="#606060">〔对手〕</text>
+<text x="122" y="480.2" font-size="12" fill="#1A1A1A">主张程序前置、应驳回起诉</text>
+</g>
+<g data-role="feeder" data-src="法官视角">
+<rect x="60" y="508.0" width="392" height="40" rx="8" ry="8" fill="#F5F0E1"/>
+<text x="74" y="532.2" font-size="12" font-weight="700" fill="#006A4E">〔法官〕</text>
+<text x="122" y="532.2" font-size="12" fill="#1A1A1A">起诉在破产受理前，应继续审理</text>
+</g>
+<rect x="792" y="469.5" width="388" height="65.0" rx="12" ry="12" fill="#F5F0E1"/>
+<text x="1166" y="491.5" font-size="11" font-weight="700" fill="#606060" text-anchor="end">程序争点</text>
+<text x="808.0" y="513.1" font-size="15" font-weight="700" fill="#1A1A1A">破产债权确认之诉是否需管理人审查前置</text>
+</g>
+<g data-role="legend">
+<text x="60" y="584" font-size="11" fill="#606060">每个焦点由以下三条来源交汇而成：</text>
+<rect x="60" y="594" width="13" height="13" rx="2" fill="#003153"/>
+<text x="79" y="605" font-size="11" fill="#606060">决定性要件</text>
+<rect x="210" y="594" width="13" height="13" rx="2" fill="#606060"/>
+<text x="229" y="605" font-size="11" fill="#606060">对手主攻线</text>
+<rect x="360" y="594" width="13" height="13" rx="2" fill="#006A4E"/>
+<text x="379" y="605" font-size="11" fill="#606060">法官视角</text>
+</g></svg>

@@ -1,0 +1,88 @@
+{
+    "contract_name": "技术服务合同",
+    "contract_number": "MQC-2026-001",
+    "contract_version": "首次签订版本",
+    "contract_language": "中文",
+    "page_count": "正文 15 页 + 附件 8 页，共 23 页",
+    "contract_type": "服务合同 · 技术服务",
+    "amount": "人民币 860,000.00 元（大写：捌拾陆万元整）（含 13% 增值税）",
+    "term": "自合同生效之日起 12 个月",
+    "sign_date": "2026 年 4 月 17 日",
+    "effective_date": "2026 年 4 月 17 日（签署之日起生效）",
+    "dispute_method": "诉讼 · 北京市海淀区人民法院",
+    "party_a_short": "XX 科技公司",
+    "party_b_short": "YY 信息技术公司",
+    "summary_date": "2026 年 4 月 17 日",
+    "party_a_info": {
+        "full_name": "北京 XX 科技有限公司",
+        "credit_code": "91110108XXXXXXXXXX",
+        "legal_representative": "张三",
+        "registered_address": "北京市海淀区知春路 XX 号",
+        "contact_address": "同住所地",
+        "contact_person": "李四（项目经理）"
+    },
+    "party_b_info": {
+        "full_name": "上海 YY 信息技术有限公司",
+        "credit_code": "91310115YYYYYYYYYY",
+        "legal_representative": "王五",
+        "registered_address": "上海市浦东新区张江路 XX 号",
+        "contact_address": "同住所地",
+        "contact_person": "赵六（技术总监）"
+    },
+    "clause_index": [
+        {"number": "第一条", "title": "合同目的", "page": "P.1", "note": ""},
+        {"number": "第二条", "title": "服务内容", "page": "P.2", "note": "含附件一技术规范"},
+        {"number": "第三条", "title": "合同价款", "page": "P.4", "note": ""},
+        {"number": "附件一", "title": "技术规范书", "page": "P.16", "note": ""}
+    ],
+    "subject_description": "甲方委托乙方为甲方开发一套客户关系管理（CRM）系统，系统包含客户档案管理、销售漏斗、数据分析报表三大模块，支持 PC 端和移动端访问，并发用户数不低于 500 人。项目开发周期 12 个月，交付后含 3 年质保期。",
+    "party_a_rights_obligations": {
+        "rights": ["验收权", "监督权", "变更权", "终止权"],
+        "obligations": ["按期付款", "提供必要协助", "明确需求"]
+    },
+    "party_b_rights_obligations": {
+        "rights": ["收款权", "验收异议权"],
+        "obligations": ["按期交付", "质保期内免费修复", "保密义务"]
+    },
+    "payment_schedule": [
+        {"milestone": "签约预付款", "amount": "258,000.00（30%）", "condition": "合同签署生效", "deadline": "5 个工作日内", "clause": "§ 3.1"},
+        {"milestone": "开发进度款", "amount": "258,000.00（30%）", "condition": "通过中期里程碑验收", "deadline": "10 个工作日内", "clause": "§ 3.2"},
+        {"milestone": "验收尾款", "amount": "344,000.00（40%）", "condition": "最终验收合格", "deadline": "15 个工作日内", "clause": "§ 3.3"}
+    ],
+    "payment_account": {
+        "payee": "乙方",
+        "account_name": "上海 YY 信息技术有限公司",
+        "bank": "中国工商银行上海浦东支行",
+        "account_number": "1234567890123456"
+    },
+    "tax_invoice": {
+        "tax_inclusion": "含 13% 增值税",
+        "invoice_type": "增值税专用发票",
+        "invoice_deadline": "收款后 5 个工作日内开具"
+    },
+    "key_dates": [
+        {"event": "合同签署日", "date": "2026-04-17", "responsible": "—", "clause": "合同末尾"},
+        {"event": "合同生效日", "date": "2026-04-17", "responsible": "—", "clause": "§ 1.1"},
+        {"event": "主要交付/完工", "date": "2027-04-17", "responsible": "乙方", "clause": "§ 4.2"},
+        {"event": "验收期限", "date": "交付后 15 个工作日内", "responsible": "甲方", "clause": "§ 5.1"}
+    ],
+    "dispute_resolution": {
+        "method": "诉讼",
+        "jurisdiction": "北京市海淀区人民法院",
+        "governing_law": "中华人民共和国内地法律"
+    },
+    "attachments": [
+        {"name": "技术规范书", "pages": "4", "content": "详细技术参数和验收指标", "relation": "§ 2.3 + § 5.2"},
+        {"name": "项目时间表", "pages": "2", "content": "分阶段里程碑时间表", "relation": "§ 6"},
+        {"name": "保密信息清单", "pages": "1", "content": "列举应保密的信息类型", "relation": "§ 9"}
+    ],
+    "attachments_signed": "是",
+    "signing_status": {
+        "party_a_seal": "已签",
+        "party_a_date": "2026-04-17",
+        "party_b_seal": "已签",
+        "party_b_date": "2026-04-17",
+        "seal_on_page_edge": "是",
+        "e_sign_platform": "纸质签署"
+    }
+}

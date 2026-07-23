@@ -1,3 +1,7 @@
+---
+disable: true
+---
+
 # PPT Generator Pro - Claude Code Skill
 
 ## 📋 元数据

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="656" viewBox="0 0 1240 656"><style>text{font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif;}</style><rect width="1240" height="656" fill="#FFFFFF"/>
+<text data-role="title" x="620.0" y="46" font-size="30" font-weight="700" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif" fill="#1A1A1A" text-anchor="middle">要件-证据对照 · 逻辑序列主义表（抽象样例）</text>
+<text x="620.0" y="80" font-size="14" fill="#606060" text-anchor="middle">原告向  ·  收官于第二层  ·  要件-证据对照（逻辑序列主义表）</text>
+<g data-role="header">
+<rect x="60" y="118" width="1140" height="30" rx="6" ry="6" fill="#F5F0E1"/>
+<text x="70.0" y="138" font-size="13" font-weight="700" fill="#1A1A1A" text-anchor="start">检视项</text>
+<text x="480.0" y="138" font-size="13" font-weight="700" fill="#1A1A1A" text-anchor="middle">规范</text>
+<text x="574.0" y="138" font-size="13" font-weight="700" fill="#1A1A1A" text-anchor="middle">责任方</text>
+<text x="708.0" y="138" font-size="13" font-weight="700" fill="#1A1A1A" text-anchor="middle">证明标准</text>
+<text x="850.0" y="138" font-size="13" font-weight="700" fill="#1A1A1A" text-anchor="middle">证明前景</text>
+<text x="950.0" y="138" font-size="13" font-weight="700" fill="#1A1A1A" text-anchor="middle">争议</text>
+<text x="1006.0" y="138" font-size="13" font-weight="700" fill="#1A1A1A" text-anchor="start">修正因素 / 核验</text>
+</g>
+<g data-role="group" data-step="①成立积极要件">
+<line x1="60" y1="148.0" x2="1200" y2="148.0" stroke="#003153" stroke-width="1.4"/>
+<text x="66" y="171.0" font-size="13" font-weight="700" fill="#003153">①成立积极要件</text>
+<text x="1194" y="171.0" font-size="11" fill="#606060" text-anchor="end">要件 · 原告本证</text>
+</g>
+<g data-role="row" data-id="T2" data-decisive="1">
+<rect x="60" y="185.0" width="1140" height="40" rx="12" ry="12" fill="#991B1B"/>
+<text x="70.0" y="209.4" font-size="13" font-weight="700" fill="#FFFFFF">T2｜请求权基础成立 · 积极要件乙（数额/范围）</text>
+<text x="480.0" y="209.4" font-size="13" fill="#FFFFFF" text-anchor="middle">主要</text>
+<text x="574.0" y="209.4" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">原告</text>
+<text x="708.0" y="208.7" font-size="11" fill="#FFFFFF" text-anchor="middle">本证·高度盖然性</text>
+<text x="850.0" y="209.4" font-size="13" fill="#FFFFFF" text-anchor="middle">低</text>
+<text x="950.0" y="209.4" font-size="13" fill="#FFFFFF" text-anchor="middle">有争议</text>
+<text x="1002.0" y="202.2" font-size="11" fill="#FFFFFF" text-anchor="start">书证提出命令 · 鉴定 · 【待核验】 ·</text>
+<text x="1002.0" y="215.2" font-size="11" fill="#FFFFFF" text-anchor="start"> 命中：有争议×责任在我方×未达标</text>
+</g>
+<g data-role="row" data-id="T1">
+<line x1="60" y1="274.0" x2="1200" y2="274.0" stroke="#E0E0E0" stroke-width="1"/>
+<text x="70.0" y="255.4" font-size="13" font-weight="400" fill="#1A1A1A">T1｜请求权基础成立 · 积极要件甲</text>
+<text x="480.0" y="255.4" font-size="13" fill="#1A1A1A" text-anchor="middle">主要</text>
+<text x="574.0" y="255.4" font-size="13" font-weight="600" fill="#003153" text-anchor="middle">原告</text>
+<text x="708.0" y="254.7" font-size="11" fill="#1A1A1A" text-anchor="middle">本证·高度盖然性</text>
+<rect x="820.0" y="245.0" width="12" height="12" rx="2" fill="#00A650"/>
+<text x="838.0" y="255.4" font-size="13" fill="#1A1A1A" text-anchor="start">高</text>
+<text x="950.0" y="255.4" font-size="13" fill="#1A1A1A" text-anchor="middle">无争议</text>
+<text x="1002.0" y="254.7" font-size="11" fill="#606060" text-anchor="start">✓核验</text>
+</g>
+<g data-role="row" data-id="T3a">
+<line x1="60" y1="320.0" x2="1200" y2="320.0" stroke="#E0E0E0" stroke-width="1"/>
+<text x="70.0" y="301.4" font-size="13" font-weight="400" fill="#1A1A1A">T3a｜标的合格（积极要件层，原告举证）</text>
+<text x="480.0" y="301.4" font-size="13" fill="#1A1A1A" text-anchor="middle">辅助</text>
+<text x="574.0" y="301.4" font-size="13" font-weight="600" fill="#003153" text-anchor="middle">原告</text>
+<text x="708.0" y="300.7" font-size="11" fill="#1A1A1A" text-anchor="middle">本证·高度盖然性</text>
+<rect x="820.0" y="291.0" width="12" height="12" rx="2" fill="#FF9900"/>
+<text x="838.0" y="301.4" font-size="13" fill="#1A1A1A" text-anchor="start">中</text>
+<text x="950.0" y="301.4" font-size="13" fill="#1A1A1A" text-anchor="middle">有争议</text>
+<text x="1002.0" y="300.7" font-size="11" fill="#606060" text-anchor="start"></text>
+</g>
+<g data-role="group" data-step="②未发生抗辩">
+<line x1="60" y1="320.0" x2="1200" y2="320.0" stroke="#003153" stroke-width="1.4"/>
+<text x="66" y="343.0" font-size="13" font-weight="700" fill="#003153">②未发生抗辩</text>
+<text x="1194" y="343.0" font-size="11" fill="#606060" text-anchor="end">抗辩 · 被告举证</text>
+</g>
+<g data-role="row" data-id="T3b">
+<line x1="60" y1="400.0" x2="1200" y2="400.0" stroke="#E0E0E0" stroke-width="1"/>
+<text x="70.0" y="381.4" font-size="13" font-weight="400" fill="#1A1A1A">T3b｜标的验收后存在缺陷/减损（抗辩层，被告举证）</text>
+<text x="480.0" y="381.4" font-size="13" fill="#1A1A1A" text-anchor="middle">防御</text>
+<text x="574.0" y="381.4" font-size="13" font-weight="600" fill="#006A4E" text-anchor="middle">被告</text>
+<text x="708.0" y="380.7" font-size="11" fill="#1A1A1A" text-anchor="middle">本证·高度盖然性</text>
+<rect x="820.0" y="371.0" width="12" height="12" rx="2" fill="#FF9900"/>
+<text x="838.0" y="381.4" font-size="13" fill="#1A1A1A" text-anchor="start">中</text>
+<text x="950.0" y="381.4" font-size="13" fill="#1A1A1A" text-anchor="middle">有争议</text>
+<text x="1002.0" y="380.7" font-size="11" fill="#606060" text-anchor="start">鉴定</text>
+</g>
+<g data-role="group" data-step="③已消灭抗辩">
+<line x1="60" y1="400.0" x2="1200" y2="400.0" stroke="#003153" stroke-width="1.4"/>
+<text x="66" y="423.0" font-size="13" font-weight="700" fill="#003153">③已消灭抗辩</text>
+<text x="1194" y="423.0" font-size="11" fill="#606060" text-anchor="end">抗辩 · 被告举证</text>
+</g>
+<g data-role="row" data-id="D1">
+<line x1="60" y1="480.0" x2="1200" y2="480.0" stroke="#E0E0E0" stroke-width="1"/>
+<text x="70.0" y="461.4" font-size="13" font-weight="400" fill="#1A1A1A">D1｜清偿 / 抵销等权利消灭事由</text>
+<text x="480.0" y="461.4" font-size="13" fill="#1A1A1A" text-anchor="middle">防御</text>
+<text x="574.0" y="461.4" font-size="13" font-weight="600" fill="#006A4E" text-anchor="middle">被告</text>
+<text x="708.0" y="460.7" font-size="11" fill="#1A1A1A" text-anchor="middle">本证·高度盖然性</text>
+<rect x="820.0" y="451.0" width="12" height="12" rx="2" fill="#00A650"/>
+<text x="838.0" y="461.4" font-size="13" fill="#1A1A1A" text-anchor="start">高</text>
+<text x="950.0" y="461.4" font-size="13" fill="#1A1A1A" text-anchor="middle">无争议</text>
+<text x="1002.0" y="460.7" font-size="11" fill="#606060" text-anchor="start"></text>
+</g>
+<g data-role="group" data-step="④行使抗辩(抗辩权)">
+<line x1="60" y1="480.0" x2="1200" y2="480.0" stroke="#003153" stroke-width="1.4"/>
+<text x="66" y="503.0" font-size="13" font-weight="700" fill="#003153">④行使抗辩(抗辩权)</text>
+<text x="1194" y="503.0" font-size="11" fill="#606060" text-anchor="end">抗辩 · 被告举证</text>
+</g>
+<g data-role="row" data-id="K1">
+<line x1="60" y1="560.0" x2="1200" y2="560.0" stroke="#E0E0E0" stroke-width="1"/>
+<text x="70.0" y="541.4" font-size="13" font-weight="400" fill="#1A1A1A">K1｜诉讼时效抗辩权（须一审主张）</text>
+<text x="480.0" y="541.4" font-size="13" fill="#1A1A1A" text-anchor="middle">防御</text>
+<text x="574.0" y="541.4" font-size="13" font-weight="600" fill="#006A4E" text-anchor="middle">被告</text>
+<text x="708.0" y="540.7" font-size="11" fill="#1A1A1A" text-anchor="middle">—</text>
+<text x="850.0" y="541.4" font-size="13" fill="#1A1A1A" text-anchor="middle">待第二层</text>
+<text x="950.0" y="541.4" font-size="13" fill="#1A1A1A" text-anchor="middle">有争议</text>
+<text x="1002.0" y="540.7" font-size="11" fill="#606060" text-anchor="start">须一审主张 · 【待核验】</text>
+</g>
+<g data-role="legend">
+<rect x="60" y="583" width="13" height="13" rx="2" fill="#00A650"/>
+<text x="79" y="594" font-size="11" fill="#606060">前景高</text>
+<rect x="139" y="583" width="13" height="13" rx="2" fill="#FF9900"/>
+<text x="158" y="594" font-size="11" fill="#606060">前景中</text>
+<rect x="218" y="583" width="13" height="13" rx="2" fill="#991B1B"/>
+<text x="237" y="594" font-size="11" fill="#606060">决定性要件（三条件命中）</text>
+<text x="60" y="618" font-size="11" fill="#606060">【待核验】=条号/要件尚未确认；前景"低/待第二层"由决定性红标承担，不另上功能红。</text>
+</g></svg>

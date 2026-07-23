@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1560" width="1240" height="1560" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <!-- 统一灰色箭头（主流程用） -->
+    <marker id="arrGray" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#9CA3AF"/>
+    </marker>
+    <!-- 淡灰箭头（支线用） -->
+    <marker id="arrGrayLight" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#B0B0B0"/>
+    </marker>
+    <!-- 稍深灰箭头（回路用） -->
+    <marker id="arrGrayDark" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#808080"/>
+    </marker>
+  </defs>
+
+  <rect width="1240" height="1560" fill="#FFFFFF"/>
+
+  <!-- ============ 顶部标题区 ============ -->
+  <text x="620" y="62" text-anchor="middle" font-size="30" font-weight="700" fill="#1A1A1A" letter-spacing="1px">mqc-contract-review-standard 工作架构</text>
+  <text x="620" y="98" text-anchor="middle" font-size="14" fill="#606060" letter-spacing="0.5px">合同文本 → 逐项扫描 → 整合分类 → 标准化输出 → 四件套交付</text>
+
+  <!-- ============ 输入层标签 ============ -->
+  <text x="620" y="154" text-anchor="middle" font-size="11" letter-spacing="7px" fill="#A0A0A0">输入层</text>
+
+  <!-- 输入卡片：米白底 + 深灰字 -->
+  <rect x="370" y="172" width="500" height="88" rx="14" ry="14" fill="#F5F0E1"/>
+  <text x="620" y="208" text-anchor="middle" font-size="18" font-weight="700" fill="#2A2A2A">合同文本</text>
+  <text x="620" y="236" text-anchor="middle" font-size="12.5" fill="#4A4A4A">律师通过 Claude / OpenClaw 发送  ·  指定审查立场（甲方 / 乙方 / 中性）</text>
+
+  <!-- 主箭头 1（灰色） -->
+  <line x1="620" y1="275" x2="620" y2="320" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ 主 Skill 块 (深蓝 #003153) ============ -->
+  <rect x="80" y="333" width="1080" height="560" rx="18" ry="18" fill="#003153"/>
+
+  <!-- Skill 块标题（白字） -->
+  <text x="620" y="380" text-anchor="middle" font-size="24" font-weight="700" fill="#FFFFFF" letter-spacing="0.5px">mqc-contract-review-standard  ·  Skill</text>
+  <text x="620" y="408" text-anchor="middle" font-size="12.5" fill="#C8D4E0" letter-spacing="3px">场景极度垂直  ·  SOP 极度精简  ·  交付极度优雅</text>
+
+  <!-- 分隔实线（不用虚线 · 淡白 opacity 降低） -->
+  <line x1="120" y1="434" x2="1120" y2="434" stroke="#FFFFFF" stroke-width="1" opacity="0.25"/>
+
+  <!-- 左半：references/ + scripts/ -->
+  <text x="130" y="470" font-size="15" font-weight="700" fill="#FFFFFF">references/</text>
+  <text x="260" y="470" font-size="12" fill="#C8D4E0">参考资料层（律师可定制）</text>
+
+  <g font-size="13" fill="#FFFFFF">
+    <text x="130" y="500" font-weight="600">checklist.md</text>
+    <text x="338" y="500" font-size="11" fill="#C8D4E0">60 项  ·  12 维度  ·  稳定 ID C001-C060</text>
+
+    <text x="130" y="526" font-weight="600">report-template.md</text>
+    <text x="338" y="526" font-size="11" fill="#C8D4E0">审查报告模板  ·  11 章结构</text>
+
+    <text x="130" y="552" font-weight="600">summary-template.md</text>
+    <text x="338" y="552" font-size="11" fill="#C8D4E0">合同概要模板  ·  纯客观提取</text>
+
+    <text x="130" y="578" font-weight="600">negotiation-guide.md</text>
+    <text x="338" y="578" font-size="11" fill="#C8D4E0">谈判清单  ·  Tier 1/2/3 + Plan B</text>
+
+    <text x="130" y="604" font-weight="600">flowchart-guide.md</text>
+    <text x="338" y="604" font-size="11" fill="#C8D4E0">业务流程图生成规则</text>
+
+    <text x="130" y="630" font-weight="600">visual-style-guide.md</text>
+    <text x="338" y="630" font-size="11" fill="#C8D4E0">视觉规范中心（全 Skill 引用）</text>
+
+    <text x="130" y="656" font-weight="600">playbook-template.md</text>
+    <text x="338" y="656" font-size="11" fill="#C8D4E0">组织立场手册（可选加载）</text>
+  </g>
+
+  <text x="130" y="700" font-size="15" font-weight="700" fill="#FFFFFF">scripts/</text>
+  <text x="200" y="700" font-size="12" fill="#C8D4E0">脚本层（自动化输出）</text>
+
+  <g font-size="13" fill="#FFFFFF">
+    <text x="130" y="730" font-weight="600">generate-report.py</text>
+    <text x="338" y="730" font-size="11" fill="#C8D4E0">生成 Word 审查报告</text>
+
+    <text x="130" y="756" font-weight="600">generate-summary.py</text>
+    <text x="338" y="756" font-size="11" fill="#C8D4E0">生成 Word 合同概要</text>
+
+    <text x="130" y="782" font-weight="600">generate-negotiation.py</text>
+    <text x="338" y="782" font-size="11" fill="#C8D4E0">生成 Word 谈判清单</text>
+
+    <text x="130" y="808" font-weight="600">render-flowchart.py</text>
+    <text x="338" y="808" font-size="11" fill="#C8D4E0">渲染 Mermaid 业务流程图</text>
+  </g>
+
+  <!-- 右半：SKILL.md 处理流程 -->
+  <text x="650" y="470" font-size="15" font-weight="700" fill="#FFFFFF">SKILL.md</text>
+  <text x="748" y="470" font-size="12" fill="#C8D4E0">五步处理流程</text>
+
+  <g font-size="13">
+    <text x="650" y="504" font-weight="700" fill="#FFFFFF">Step 1  ·  接收与确认</text>
+    <text x="838" y="504" font-size="11" fill="#C8D4E0">读取合同 + 解析立场参数</text>
+
+    <text x="650" y="548" font-weight="700" fill="#FFFFFF">Step 2  ·  逐项扫描</text>
+    <text x="838" y="548" font-size="11" fill="#C8D4E0">对照 checklist 60 项  ·  反噪音</text>
+
+    <text x="650" y="592" font-weight="700" fill="#FFFFFF">Step 3  ·  整合分类</text>
+    <text x="838" y="592" font-size="11" fill="#C8D4E0">12 维度归类  ·  风险等级排序</text>
+
+    <text x="650" y="636" font-weight="700" fill="#FFFFFF">Step 4  ·  标准化输出</text>
+    <text x="838" y="636" font-size="11" fill="#C8D4E0">调用 scripts/  ·  生成四件套</text>
+
+    <text x="650" y="680" font-weight="700" fill="#FFFFFF">Step 5  ·  清单迭代</text>
+    <text x="838" y="680" font-size="11" fill="#C8D4E0">清单外发现  →  反馈 checklist</text>
+  </g>
+
+  <!-- 标注体系卡片（右下·橙色 #FF9900 · 白字） -->
+  <rect x="650" y="708" width="470" height="110" rx="10" ry="10" fill="#FF9900"/>
+  <text x="670" y="734" font-size="12.5" font-weight="700" fill="#FFFFFF" letter-spacing="2px">审查标注体系</text>
+  <text x="670" y="758" font-size="11" fill="#FFFFFF">风险等级  ■ 高  /  ■ 中  /  ■ 低   ·   功能色交通灯（#FF0000 / #FF9900 / #00A650）</text>
+  <text x="670" y="778" font-size="11" fill="#FFFFFF">确认层级  L1 基础  /  L2 中级  /  L3 高级   ·   AI 置信度分层</text>
+  <text x="670" y="798" font-size="11" fill="#FFFFFF">立场差异  甲方  /  乙方  /  中性   ·   同一条款不同立场风险方向</text>
+
+  <!-- 主箭头 2（灰色） -->
+  <line x1="620" y1="908" x2="620" y2="960" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <!-- ============ 输出层标签 ============ -->
+  <text x="620" y="990" text-anchor="middle" font-size="11" letter-spacing="7px" fill="#A0A0A0">标准化输出  ·  四件套</text>
+
+  <!-- 四件套四张卡片（无边框·整体色块） -->
+
+  <!-- 卡片1 · 合同概要（绿色 #006A4E + 白字） -->
+  <rect x="80" y="1012" width="270" height="130" rx="14" ry="14" fill="#006A4E"/>
+  <text x="215" y="1050" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">合同概要</text>
+  <text x="215" y="1076" text-anchor="middle" font-size="11" fill="#E5F0EC">客观信息提取  ·  无主观判断</text>
+  <text x="215" y="1096" text-anchor="middle" font-size="11" fill="#E5F0EC">2-4 页  ·  纯黑白  ·  归档友好</text>
+  <line x1="115" y1="1112" x2="315" y2="1112" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/>
+  <text x="215" y="1128" text-anchor="middle" font-size="10" fill="#E5F0EC">→  summary-template.md</text>
+
+  <!-- 卡片2 · 审查报告（深红 #8C1515 + 白字 · 核心交付物） -->
+  <rect x="370" y="1012" width="270" height="130" rx="14" ry="14" fill="#8C1515"/>
+  <text x="505" y="1050" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">审查报告</text>
+  <text x="505" y="1076" text-anchor="middle" font-size="11" fill="#F5D9D9">风险分析 + 桥面条款</text>
+  <text x="505" y="1096" text-anchor="middle" font-size="11" fill="#F5D9D9">核心交付物  ·  10-30 页</text>
+  <line x1="405" y1="1112" x2="605" y2="1112" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/>
+  <text x="505" y="1128" text-anchor="middle" font-size="10" fill="#F5D9D9">→  report-template.md</text>
+
+  <!-- 卡片3 · 谈判清单（黄色 #F6C12C + 深灰字 · 浅色用深灰) -->
+  <rect x="660" y="1012" width="270" height="130" rx="14" ry="14" fill="#F6C12C"/>
+  <text x="795" y="1050" text-anchor="middle" font-size="17" font-weight="700" fill="#2A2A2A">谈判清单</text>
+  <text x="795" y="1076" text-anchor="middle" font-size="11" fill="#3A3A3A">Tier 1/2/3 + Plan B 对冲</text>
+  <text x="795" y="1096" text-anchor="middle" font-size="11" fill="#3A3A3A">谈判桌作战手册</text>
+  <line x1="695" y1="1112" x2="895" y2="1112" stroke="#4A4A4A" stroke-width="1" opacity="0.3"/>
+  <text x="795" y="1128" text-anchor="middle" font-size="10" fill="#3A3A3A">→  negotiation-guide.md</text>
+
+  <!-- 卡片4 · 业务流程图（深蓝 #003153 + 白字,与流程图终端主色一致） -->
+  <rect x="950" y="1012" width="210" height="130" rx="14" ry="14" fill="#003153"/>
+  <text x="1055" y="1050" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">业务流程图</text>
+  <text x="1055" y="1076" text-anchor="middle" font-size="11" fill="#C8D4E0">履约路径可视化</text>
+  <text x="1055" y="1096" text-anchor="middle" font-size="11" fill="#C8D4E0">Mermaid SVG 渲染</text>
+  <line x1="985" y1="1112" x2="1125" y2="1112" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/>
+  <text x="1055" y="1128" text-anchor="middle" font-size="10" fill="#C8D4E0">→  flowchart-guide.md</text>
+
+  <!-- 箭头到交付层：四条灰色直线汇聚（用 path 做直线+圆角转弯） -->
+  <path d="M 215 1145 L 215 1175 L 620 1175" stroke="#B0B0B0" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
+  <path d="M 505 1145 L 505 1175 L 620 1175" stroke="#B0B0B0" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
+  <path d="M 795 1145 L 795 1175 L 620 1175" stroke="#B0B0B0" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
+  <path d="M 1055 1145 L 1055 1175 L 620 1175" stroke="#B0B0B0" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
+  <!-- 汇聚后下行箭头 -->
+  <line x1="620" y1="1175" x2="620" y2="1205" stroke="#B0B0B0" stroke-width="1.4" marker-end="url(#arrGrayLight)"/>
+
+  <!-- ============ 交付层（米白卡片 + 深灰字） ============ -->
+  <rect x="280" y="1215" width="680" height="82" rx="12" ry="12" fill="#F5F0E1"/>
+  <text x="620" y="1248" text-anchor="middle" font-size="16" font-weight="700" fill="#2A2A2A">案件文件夹  ·  交付与归档</text>
+  <text x="620" y="1275" text-anchor="middle" font-size="11.5" fill="#4A4A4A">四件套写入案件目录  ·  供后续 Skill（修订 / 批注 / 版本比对 / 主体核查）读取调用</text>
+
+  <!-- ============ 右侧回路（清单迭代） · 直线 + 圆角转弯 · 非虚线 ============ -->
+  <!-- 从主块右边缘中部 (1160, 680) 出发，向右走 L 1210, 然后折下到 1210, 1080，再折回 1163, 1080 -->
+  <path d="M 1160 680 L 1210 680 L 1210 1080 L 1163 1080"
+        stroke="#808080" stroke-width="1.5" fill="none"
+        stroke-linejoin="round"
+        marker-end="url(#arrGrayDark)"/>
+  <!-- 回路标签（纵向） -->
+  <text x="1225" y="875" font-size="10" fill="#606060" writing-mode="tb" letter-spacing="3px">清单外发现  →  迭代 checklist</text>
+
+  <!-- ============ 底部分隔细线 ============ -->
+  <line x1="80" y1="1345" x2="1160" y2="1345" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- ============ 底部核心洞察 ============ -->
+  <text x="620" y="1385" text-anchor="middle" font-size="16" font-weight="700" fill="#003153" letter-spacing="1.5px">律师只定制 references/ 和审查立场，处理流程与脚本无需修改</text>
+  <text x="620" y="1418" text-anchor="middle" font-size="12" fill="#606060">完整业务链路：合同文本  →  标准审查 Skill  →  四件套  →  案件文件夹  →  下游 Skill 协同</text>
+  <text x="620" y="1442" text-anchor="middle" font-size="12" fill="#606060">清单可迭代：每次审查沉淀新发现  ·  checklist.md 越用越精准  ·  律师专属审查经验资产化</text>
+
+  <!-- 底部版权 -->
+  <text x="620" y="1508" text-anchor="middle" font-size="10" fill="#B0B0B0" letter-spacing="2px">LEGAL AI TOOLMAKER  ·  法律工具制造者  |  缪奇川律师  出品</text>
+</svg>
