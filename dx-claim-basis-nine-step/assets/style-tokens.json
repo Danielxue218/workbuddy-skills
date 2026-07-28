@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "skill": "dx-claim-basis-nine-step",
+    "role": "三图视觉 tokens · 坐 mqc-contract-review 暖调 · 引擎照搬 mqc-litigation-visual",
+    "palette_rules": [
+      "红只有一种 #991B1B（决定性要件/胜负手/最尖焦点/最坏情形/前景最差项），实心块白字，每图≤2处",
+      "功能色仅绿橙（高/中前景与置信度），交通灯红 #FF0000 已弃用",
+      "美学节点色：navy 主锚/终端 · cream 判断/中性卡 · green 次要/被告向 · yellow 双方 · blue 甲方/原告向",
+      "功能色与美学色不得在同一元素混用（继承合同审查铁律）",
+      "键结构保留 mqc-litigation-visual 契约，common.py 工具层不改即可读取"
+    ]
+  },
+
+  "colors": {
+    "bg": "#FFFFFF",
+    "ink": "#1A1A1A",
+    "ink2": "#606060",
+    "note": "#A0A0A0",
+    "line": "#9CA3AF",
+    "line_soft": "#C3C9D2",
+    "grid": "#E0E0E0",
+    "card_fill": "#F5F0E1",
+    "card_stroke": "#D6DAE0",
+    "bar": "#D1D5DB",
+    "circle": "#374151",
+    "red": "#991B1B",
+    "red_txt": "#FFFFFF",
+    "white": "#FFFFFF",
+
+    "navy": "#003153",
+    "cream": "#F5F0E1",
+    "green": "#006A4E",
+    "yellow": "#F6C12C",
+    "yellow_txt": "#2A2A2A",
+    "blue": "#0070C0",
+
+    "func_high": "#00A650",
+    "func_mid": "#FF9900",
+
+    "stance_plaintiff": "#003153",
+    "stance_defendant": "#006A4E",
+    "stance_neutral": "#F5F0E1"
+  },
+
+  "flow_colors": {
+    "line": "#9CA3AF",
+    "step_fill": "#F5F0E1",
+    "step_stroke": "#D6DAE0",
+    "decision_fill": "#FFFFFF",
+    "decision_stroke": "#9CA3AF",
+    "terminal_fill": "#003153",
+    "terminal_txt": "#FFFFFF"
+  },
+
+  "font_stack": "'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif",
+  "title_font": "'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Noto Sans SC','Helvetica Neue',Arial,sans-serif",
+
+  "type_scale": {
+    "doc_title": 30,
+    "subtitle": 14,
+    "node_title": 17,
+    "cell": 13,
+    "label": 13,
+    "note": 12,
+    "num": 22,
+    "axis_year": 14,
+    "edge_label": 13
+  },
+
+  "arrow": {
+    "path": "M 0 1.5 L 12 6 L 0 10.5 Z",
+    "size": 10,
+    "refX": 10.5
+  },
+
+  "radius": {
+    "card": 12,
+    "capsule": 11
+  },
+
+  "dash": "6 4",
+
+  "stroke": {
+    "connector": 2,
+    "emphasis": 3,
+    "hairline": 1
+  }
+}

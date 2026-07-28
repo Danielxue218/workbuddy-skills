@@ -1,0 +1,60 @@
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'fontFamily': '"PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif',
+    'fontSize': '14px',
+    'primaryColor': '#F8FAFC',
+    'primaryTextColor': '#000000',
+    'primaryBorderColor': '#475569',
+    'lineColor': '#64748B',
+    'tertiaryColor': '#FFFFFF',
+    'background': '#FFFFFF',
+    'mainBkg': '#F8FAFC',
+    'secondBkg': '#FFFFFF'
+  },
+  'flowchart': {
+    'nodeSpacing': 50,
+    'rankSpacing': 60,
+    'curve': 'basis',
+    'htmlLabels': true
+  }
+}}%%
+graph TD
+classDef default fill:#F8FAFC,stroke:#475569,stroke-width:1.5px,color:#000000
+classDef partyA fill:#D6EBF5,stroke:#0070C0,stroke-width:1.5px,color:#0C3E5E
+classDef partyB fill:#D4EDDA,stroke:#006A4E,stroke-width:1.5px,color:#0F3A1A
+classDef bothParties fill:#FEF3C7,stroke:#F6C12C,stroke-width:1.5px,color:#78350F
+classDef decision fill:#F5F0E1,stroke:#334155,stroke-width:2px,color:#000000
+classDef exception fill:#FFE4E6,stroke:#C92C2C,stroke-width:1.5px,color:#881337
+classDef terminal fill:#003153,stroke:#003153,stroke-width:1.5px,color:#FFFFFF
+    START([合同签订生效]):::terminal
+
+    START --> A1[甲方支付预付款<br/>30% · 258,000 元]:::partyA
+    A1 --> B1[乙方组建项目组<br/>确认需求文档]:::partyB
+    B1 --> D1[需求评审]:::bothParties
+
+    D1 --> Q1{需求是否确认?}:::decision
+    Q1 -->|通过| B2[乙方进入开发阶段<br/>分阶段交付]:::partyB
+    Q1 -->|不通过| B1_RET[调整需求文档]:::partyB
+    B1_RET --> D1
+
+    B2 --> M1[中期里程碑验收]:::bothParties
+    M1 --> Q2{中期验收?}:::decision
+    Q2 -->|通过| A2[甲方支付进度款<br/>30% · 258,000 元]:::partyA
+    Q2 -->|整改| B2_FIX[乙方整改]:::exception
+    B2_FIX --> M1
+
+    A2 --> B3[乙方完成全部开发<br/>内部测试]:::partyB
+    B3 --> D2[正式交付甲方<br/>代码+文档+培训]:::bothParties
+
+    D2 --> A3[甲方最终验收<br/>15 个工作日内完成]:::partyA
+    A3 --> Q3{验收是否合格?}:::decision
+
+    Q3 -->|合格| A4[甲方支付尾款<br/>40% · 344,000 元]:::partyA
+    Q3 -->|不合格| B4[乙方整改<br/>重新验收]:::exception
+    B4 --> A3
+
+    A4 --> BOTH1[双方确认项目结项<br/>开始 3 年质保期]:::bothParties
+
+    BOTH1 --> WARRANTY[质保期内运维<br/>乙方免费修复 Bug]:::partyB
+    WARRANTY --> END([合同履约完成<br/>归档]):::terminal
